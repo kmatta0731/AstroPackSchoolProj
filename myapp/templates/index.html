@@ -1,22 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>Project394</title>
-        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
     <body>
         <header class="nav-bar">
             <h1 class="logo">Project394</h1>
             <div class="nav-links">
                 <ul>
-                    <a href="#"><li>Login</li></a>
+                    <a href="login"><li>Login</li></a>
                 </ul>
-                <a href="#"><button class="sign-up-button">Sign Up</button></a>    
+                <a href="register"><button class="sign-up-button">Sign Up</button></a>    
             </div>
         </header>
         <div class="main">
             <div class="slogan">
-                <h1 class="slogan-heading">The Ultimate<br> Packing List</h1>
+                <h1 class="slogan-heading">The Ultimate<br>Packing List</h1>
                 <h2 class="slogan-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam.
                 </h2>
                 <button class="sign-up-button" id="get-started-button">Get Started</button>

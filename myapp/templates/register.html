@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    </head>
+    <body>
+        <h1>Sign Up</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {{form.as_p}}
+            <input type="submit" name="Create User">
+        </form>
+    </body>
+</html>
