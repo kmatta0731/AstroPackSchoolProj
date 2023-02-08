@@ -1,17 +1,25 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+.nav-bar {
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
     font-family: Arial, sans-serif;
-    padding: 2em;
     background-color: #f2f2f2;
 }
 
-h1 {
+.login-text {
     text-align: left;
     font-size: 2em;
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: #444;
 }
 
 form {
@@ -44,7 +52,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 input[type="submit"] {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #404eed;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -54,7 +62,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color: #404eed;
 }
 
 .messages {
