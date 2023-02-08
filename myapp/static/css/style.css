@@ -47,7 +47,6 @@ a:hover {
 }
 
 .sign-up-button:hover {
-    color: #404eed;
     cursor: pointer;
     box-shadow: 1px 1px 5px black;
     transition: 0.4s;
@@ -81,7 +80,7 @@ a:hover {
 #get-started-button {
     padding: 13px 35px;
     font-size: 18px;
-    color: #404eed;
+    color: black;
 }
 
 h2 {
