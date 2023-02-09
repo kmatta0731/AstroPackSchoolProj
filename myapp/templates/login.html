@@ -5,10 +5,20 @@
         <title>Login</title>
         <link rel="stylesheet" href="{% static 'css/login.css' %}">
         <link rel="stylesheet" href="{% static 'css/register.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
     <body>
+        <header class="nav-bar">
+            <a href="#" class="logo-link"><h1 class="logo">Project394</h1></a>        
+            <div class="nav-links">
+                <ul>
+                    <a href="#"><li>Login</li></a>
+                </ul>
+                <a href="#"><button class="sign-up-button">Sign Up</button></a>    
+            </div>
+        </header>
         <form method="POST" action="">
-            <h1>Login</h1>
+            <h1 class="login-text">Login</h1>
             {% csrf_token %}
             {% if messages %}
                 <ul class="messages">
