@@ -9,7 +9,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:    #user successfully logged in
             login(request, user)
-            return redirect('home')
+            return redirect('dashboard')
         else:   #user entered wrong name or password
             messages.error(request, 'Username or password is incorrect')
             return render(request, 'login.html')
