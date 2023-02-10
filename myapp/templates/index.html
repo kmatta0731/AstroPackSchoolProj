@@ -29,6 +29,7 @@
         </div>
         <div class="bottom-container">
             <div class="form-container">
+                <h1 class="form-heading">Be prepared for your next adventure</h1>
                 <form action="{% url 'home' %}" method="post">
                     {% csrf_token %}
                     <input type="text" id="destination" name="destination" required>
@@ -36,12 +37,14 @@
                     {{ form.checkout }}
             </form>
             <input type="submit" value="Submit" class="sign-up-button">
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD-VajPdA2hcwGdDkC0JHzjKq94MYi7tI&libraries=places"></script>
-                <script src="{% static 'js/app.js' %}"></script>                                 
             </div>
         </div>
         <footer>
 
         </footer>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD-VajPdA2hcwGdDkC0JHzjKq94MYi7tI
+                     &libraries=places">
+        </script>
+        <script src="{% static 'js/app.js' %}"></script>                                 
     </body>
 </html>
