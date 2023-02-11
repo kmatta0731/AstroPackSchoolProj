@@ -5,7 +5,6 @@ from . import views
 from django.urls import path
 from user_dashboard.views import dashboard
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),

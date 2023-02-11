@@ -1,7 +1,6 @@
-// destination field for generator form - using Google Maps Place Autocomplete API
 const form = document.querySelector('.generator-form');
 
-function initAutocomplete() {
+function initAutocomplete() {   // Callback function for the Google API
     form.addEventListener('submit', (event) => {
         event.preventDefault();
     
@@ -34,6 +33,7 @@ function initAutocomplete() {
         console.log('Check-out: ', checkout);
     });
     
+    // destination field for generator form - using Google Maps Place Autocomplete API
     var destinationInput = document.getElementById('destination');
     var autocomplete = new google.maps.places.Autocomplete(destinationInput);    
 }

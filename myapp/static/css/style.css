@@ -199,3 +199,59 @@ footer {
         margin-bottom: 25px;
     }
 }
+
+@media (max-width: 800px) {
+    .slogan-text {
+        display: none;
+    }
+
+    .slogan-heading {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+
+    #get-started-button {
+        padding: 13px 35px;
+        font-size: 18px;
+        color: black;
+    }
+}
+
+@media (max-width: 660px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #astro-image {
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+    }
+
+    .main-image-container {
+        padding: 50px;
+        margin: 0;
+    }
+
+    .slogan {
+        padding: 0;
+        margin: 0;
+    }
+
+    .slogan-heading {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        line-height: 50px;
+    }
+
+    .form-container {
+        display: block;
+    }
+
+    /* #get-started-button {
+        display: none;
+    } */
+}
