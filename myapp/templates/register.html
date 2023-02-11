@@ -8,12 +8,12 @@
     </head>
     <body>
         <header class="nav-bar">
-            <a href="#" class="logo-link"><h1 class="logo">Project394</h1></a>        
+            <a href="{% url 'home' %}" class="logo-link"><h1 class="logo">Project394</h1></a>        
             <div class="nav-links">
                 <ul>
-                    <a href="login"><li>Login</li></a>
+                    <a href="{% url 'login' %}"><li>Login</li></a>
                 </ul>
-                <a href="register"><button class="sign-up-button">Sign Up</button></a>    
+                <a href="{% url 'register' %}"><button class="sign-up-button">Sign Up</button></a>    
             </div>
         </header>
         <div class="sign-up-container">

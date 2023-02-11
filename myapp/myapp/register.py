@@ -17,7 +17,7 @@ def register_view(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login_view')
+            return redirect('login')
         else:   #user entered invalid password option
             messages.error(request, 'Password must contain at least 8 characters, including 1 letter and 1 number')
     context = {'form':form}

@@ -110,7 +110,148 @@ h2 {
     justify-content: center;
 }
 
+.form-container {
+    width: 90%;
+}
+
 footer {
     height: 200px;
     background-color: rgb(54, 54, 54);
+}
+
+@media (max-width: 1190px) {
+    .slogan {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .slogan-heading {
+        margin-bottom: 30px;
+        font-size: 49px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .slogan {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .slogan-heading {
+        margin-bottom: 20px;
+        font-size: 35px;
+        line-height: 40px;
+    }
+
+    #get-started-button {
+        padding: 10px 30px;
+        font-size: 15px;
+        color: black;
+    }
+
+    .slogan-text {
+        line-height: 27px;
+    }
+
+    .main-image-container {
+        padding-top: 23px;
+        padding-bottom: 70px;
+        margin-right: 60px;
+    }
+
+    h2 {
+        margin-bottom: 25px;
+    }
+}
+
+
+@media (max-width: 888px) {
+    .slogan {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .slogan-heading {
+        margin-bottom: 20px;
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    #get-started-button {
+        padding: 10px 30px;
+        font-size: 15px;
+        color: black;
+    }
+
+    .slogan-text {
+        line-height: 27px;
+        font-size: 20px;
+    }
+
+    .main-image-container {
+        padding-top: 23px;
+        padding-bottom: 70px;
+        margin-right: 50px;
+    }
+
+    h2 {
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 800px) {
+    .slogan-text {
+        display: none;
+    }
+
+    .slogan-heading {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+
+    #get-started-button {
+        padding: 13px 35px;
+        font-size: 18px;
+        color: black;
+    }
+}
+
+@media (max-width: 660px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #astro-image {
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+    }
+
+    .main-image-container {
+        padding: 50px;
+        margin: 0;
+    }
+
+    .slogan {
+        padding: 0;
+        margin: 0;
+    }
+
+    .slogan-heading {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        line-height: 50px;
+    }
+
+    .form-container {
+        display: block;
+    }
+
+    /* #get-started-button {
+        display: none;
+    } */
 }
