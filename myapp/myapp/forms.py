@@ -21,8 +21,8 @@ GENDERS = [
 
 class DestinationForm(forms.Form):
     destination = forms.CharField(widget=forms.TextInput(attrs={'id':'destination', 'placeholder': 'Enter destination'}))
-    checkin = forms.DateField(initial=date.today(), widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input', 'id':'check-in-field', 'placeholder': 'Enter check-in date'}))
-    checkout = forms.DateField(initial=(date.today() + timedelta(days=7)),widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input', 'placeholder': 'Enter check-out date'}))
+    checkin = forms.DateField(initial=date.today(), widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input', 'id':'check-in-field'}))
+    checkout = forms.DateField(initial=(date.today() + timedelta(days=7)),widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input'}))
     occasion = forms.CharField(widget=forms.Select(choices=OCCASIONS, attrs={'placeholder': 'Choose an occasion', 'class': 'occasion-dropdown'}))
     gender = forms.CharField(required=False,widget=forms.Select(choices=GENDERS, attrs={'placeholder': 'Choose an occasion', 'class': 'gender-dropdown'}))
 
