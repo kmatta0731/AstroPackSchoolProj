@@ -1,18 +1,37 @@
 # code for generator form on home page
+from datetime import date, timedelta
 from django import forms
 from django.shortcuts import render, redirect
 
+OCCASIONS = [
+    ('', 'Choose an occasion'),
+    ('wedding', 'Wedding'),
+    ('anniversary', 'Anniversary'),
+    ('birthday', 'Birthday'),
+    ('business', 'Business'),
+    ('holidays', 'Holidays'),
+    ('no_reason', 'Leisure'),
+]
+
+GENDERS = [
+    ('', "Gender (Optional)"),
+    ('male', 'Male'),
+    ('female', 'Female')
+]
+
 class DestinationForm(forms.Form):
     destination = forms.CharField(widget=forms.TextInput(attrs={'id':'destination', 'placeholder': 'Enter destination'}))
-    checkin = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input'}))
-    checkout = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input'}))
+    checkin = forms.DateField(initial=date.today(), widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input', 'id':'check-in-field'}))
+    checkout = forms.DateField(initial=(date.today() + timedelta(days=7)),widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input'}))
+    occasion = forms.CharField(widget=forms.Select(choices=OCCASIONS, attrs={'placeholder': 'Choose an occasion', 'class': 'occasion-dropdown'}))
+    gender = forms.CharField(required=False,widget=forms.Select(choices=GENDERS, attrs={'placeholder': 'Choose an occasion', 'class': 'gender-dropdown'}))
 
-    def clean(self):
+    def clean(self):  # makes sure that checkout date is after checkin
         cleaned_data = super().clean()
         checkin = cleaned_data.get('checkin')
         checkout = cleaned_data.get('checkout')
 
-        if checkin and checkout and checkin >= checkout:    # makes sure that checkout date is after checkin
+        if checkin and checkout and checkin >= checkout:   
             raise forms.ValidationError("Check-in date must be before check-out date.")
 
 def process_form(request):

@@ -28,11 +28,15 @@
     text-align: center;
 }
 
+.nav-links li {
+    display: inline;
+}
+
 a {
     list-style: none;
     text-decoration: none;
     color: white;
-    margin: 20px;
+    margin: 10px;
     font-size: 15px;
 }
 
@@ -72,7 +76,7 @@ a:hover {
     padding-right: 140px;
 }
 
-.slogan-heading {
+.slogan-heading, .username {
     margin-bottom: 35px;
     font-size: 53px;
     line-height: 60px;
@@ -104,10 +108,13 @@ h2 {
 }
 
 .bottom-container {
-    height: 500px;
+    height: 100%;
+    padding: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    flex-direction: column;
 }
 
 .form-container {

@@ -3,27 +3,56 @@
     color: rgb(54, 54, 54);
 }
 
-#destination {      /* Destination input field */
-    width: 300px;
+#error-message {
+    font-size: 25px;
+    margin-top: 20px;
 }
 
-input[type="text"], .date-input {
-    width: 20%;
-    padding: 15px 0px;
+input[type="text"], .date-input, .occasion-dropdown, .gender-dropdown {
+    width: 100%;
+    padding: 15px 30px;
     font-size: 16px;
-    border: 1px solid gray;
+    border: 1px solid rgb(172, 172, 172);
     border-radius: 10px;
     outline: none;
     text-align: center;
+    margin: 10px 0px;
 }
 
-.date-input {
-    width: 17%;
-    margin-left: 15px;
-    padding-right: 25px;
+input[type="text"]::placeholder {
+    color: black;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.material-symbols-outlined {
+    color: #404eed;
+}
+
+.checkin-checkout-fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#check-in-field {
+    margin-right: 10px;
+}
+
+.destination-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 input[type="submit"] {
+    margin-top: 10px;
     padding: 15px 28px;
     background-color: #404eed;
     color: #fff;
@@ -31,7 +60,6 @@ input[type="submit"] {
     border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
-    margin-left: 15px;
 }
 
 input[type="submit"]:hover {
@@ -39,15 +67,17 @@ input[type="submit"]:hover {
     box-shadow: none;
 }
 
-.bottom-container {
+.form-container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .generator-form {
+    width: 40%;
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
+    flex-direction: column;
 }
