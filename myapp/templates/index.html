@@ -5,16 +5,26 @@
         <title>Project394</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/generator-form.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
     <body>
         <header class="nav-bar">
-            <a href="{% url 'home' %}" class="logo-link"><h1 class="logo">Project394</h1></a>        
+            <a href="{% url 'home' %}" class="logo-link"><h1 class="logo">Project394</h1></a>  
+            {% if user.is_authenticated %}  
+            <div class="nav-links">
+                <ul>
+                    <a href="{% url 'dashboard' %}"><li>Dashboard</li></a>
+                    <a href="{% url 'logout' %}"><li>Log out</li></a>
+                </ul>
+            </div>
+            {% else %}    
             <div class="nav-links">
                 <ul>
                     <a href="{% url 'login' %}"><li>Login</li></a>
                 </ul>
                 <a href="{% url 'register' %}"><button class="sign-up-button">Sign Up</button></a>    
             </div>
+            {% endif %}
         </header>
         <div class="main">
             <div class="slogan">
@@ -32,9 +42,29 @@
                 <h1 class="form-heading">Be prepared for your next adventure</h1>
                 <form action="{% url 'process_form' %}" method="post" class="generator-form">
                     {% csrf_token %}
-                    {{ form.destination }}
-                    {{ form.checkin }}
-                    {{ form.checkout }}
+                    <!-- <div class="destination-field"> -->
+                        <span class="material-symbols-outlined">
+                            travel_explore
+                        </span>
+                        {{ form.destination }}
+                    <!-- </div> -->
+                    <span class="material-symbols-outlined">
+                        calendar_month
+                    </span>
+                    <div class="checkin-checkout-fields">
+                        {{ form.checkin }}
+                        {{ form.checkout }}
+                    </div>               
+                    <div class="occasion-field">
+                        <span class="material-symbols-outlined">
+                            work
+                        </span>
+                        {{ form.occasion }}
+                        <span class="material-symbols-outlined">
+                            person
+                        </span>
+                        {{ form.gender }}
+                    </div>         
                     {% if form.errors %}
                         <div class="form-error">
                             {{ form.errors }}
