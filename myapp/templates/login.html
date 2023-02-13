@@ -2,10 +2,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login</title>
+        <title>Login For the Ultimate Packing List</title>
         <link rel="stylesheet" href="{% static 'css/login.css' %}">
-        <link rel="stylesheet" href="{% static 'css/register.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+
+        <title>Google Icons</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body>
         <header class="nav-bar">
@@ -18,7 +21,7 @@
             </div>
         </header>
         <form method="POST" action="">
-            <h1 class="login-text">Login</h1>
+            <h1 class="login-text">Login For the Ultimate Packing List</h1>
             {% csrf_token %}
             {% if messages %}
                 <ul class="messages">
@@ -27,13 +30,20 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username">
+            <label for="username"></label>
+            <i class="material-icons">person</i>
+            <input type="text" name="" id="username" placeholder="Username">
             <br>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+            <label for="password"></label>
+            <i class="material-icons">lock</i>
+            <input type="password" name="" id="password" placeholder="Password">
             <br>
             <input type="submit" value="Login">
+            <br><br>
+            <label class="register-label">
+            Not registered yet?  
+            <a href="register.html" class="register-link">Click here to register</a>
+            </label>
         </form>
     </body>
 </html>
