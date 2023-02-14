@@ -28,7 +28,7 @@ form {
     margin: 50px auto;
     padding: 50px;
     background-color: white;
-    box-shadow: 2px 2px 20px rgb(235, 235, 235);
+    /* box-shadow: 2px 2px 9px rgb(241, 241, 241); */
     border-radius: 10px;
     display: flex;
     text-align: left;

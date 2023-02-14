@@ -7,6 +7,7 @@ OCCASIONS = [
     ('', 'Choose an occasion'),
     ('wedding', 'Wedding'),
     ('anniversary', 'Anniversary'),
+    ('music_festival', 'Music Festival'),
     ('birthday', 'Birthday'),
     ('business', 'Business'),
     ('holidays', 'Holidays'),

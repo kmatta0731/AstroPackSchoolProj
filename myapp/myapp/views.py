@@ -8,15 +8,18 @@ from .logout import logout_view
 from django import forms
 from .forms import DestinationForm
 from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import user_passes_test
 
 def home(request):
     return render(request, 'index.html', {'form': DestinationForm})
 
-def process_temp(request):
+def process_data(request):
     if request.method == 'POST':
         temp = request.POST.get('temp')
-        print(request.body)
+        destination = request.POST.get('destination')
+        print(temp)
+        print(destination)
         return JsonResponse({'status': 'success'})
     else:
-        print(request.body)
-        return HttpResponse("This endpoint only accepts POST requests.")
+        return HttpResponse("Error.")
+
