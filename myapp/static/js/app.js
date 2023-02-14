@@ -42,7 +42,7 @@ function autocompleteCallback() {   // callback function for the Google API
           .catch(error => {
             console.error(error);
           });
-          
+
         console.log('Destination: ', destination);
         console.log('Check-in: ', checkin);
         console.log('Check-out: ', checkout);
@@ -59,7 +59,7 @@ function process_data(temp, destination) {
     data: {temp: temp, destination: destination},  // data to be sent with the request
     headers: {'X-CSRFToken': csrf_token},  // include the CSRF token with the data sent
     success: function (response) {  // callback function for successful request
-      console.log("Hi from Python :)");
+      console.log("Hi from the backend :)");
     },
     error: function (xhr, status, error) {  // callback function for failed request
       console.error(error);
@@ -73,3 +73,9 @@ function scrollToForm() {
         behavior: 'smooth'
     });
 }
+
+$(document).ready(function() {
+  $('.date-field').click(function() {
+    $(this).find('input[type="date"]').trigger('click');
+  });
+});
