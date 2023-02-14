@@ -15,11 +15,13 @@
 }
 
 body {
-    /* background-color: purple; */
+    background-color: #404eed;
     font-family: Arial, sans-serif;
 }
 
 .sign-up-text {
+    text-shadow: 2px 2px 5px #404eed;
+    text-align: center;
     font-size: 36px;
     color: #444;
     margin-bottom: 30px;
@@ -38,18 +40,18 @@ form {
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
-    width: 40%;
-    padding: 10px 0px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    border: none;
-    border-bottom: 2px solid rgb(196, 196, 196);
-    outline: none;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
     outline: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgb(6, 6, 157);
     transition: 0.4s;
 }
 
@@ -69,7 +71,8 @@ input[type="submit"]:hover {
 }
 
 .messages .error {
-    color: black;
+    background-color: #ff9b9b;
+    color: white;
 }
 
 .messages .success {
