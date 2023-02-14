@@ -1,11 +1,17 @@
 .form-heading {     /* "Be prepared for your next adventure" slogan */
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     color: rgb(54, 54, 54);
+}
+
+#weather-message {
+    font-size: 25px;
+    line-height: 35px;
+    margin-top: 25px;
 }
 
 input[type="text"], .date-input, .occasion-dropdown, .gender-dropdown {
     width: 100%;
-    padding: 15px 45px;
+    padding: 15px 30px;
     font-size: 16px;
     border: 1px solid rgb(172, 172, 172);
     border-radius: 10px;
@@ -14,16 +20,22 @@ input[type="text"], .date-input, .occasion-dropdown, .gender-dropdown {
     margin: 10px 0px;
 }
 
+.checkin-checkout-fields {
+    margin-top: 9px;
+    margin-bottom: 9px;
+}
+
 input[type="text"]::placeholder {
     color: black;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
+    width: 21px;
+    height: 21px;
 }
 
 .material-symbols-outlined {
-    color: #404eed;
+    color: black;
 }
 
 .checkin-checkout-fields {
@@ -35,7 +47,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 #check-in-field {
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .destination-field {

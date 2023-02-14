@@ -76,7 +76,7 @@ a:hover {
     padding-right: 140px;
 }
 
-.slogan-heading {
+.slogan-heading, .username {
     margin-bottom: 35px;
     font-size: 53px;
     line-height: 60px;
@@ -114,6 +114,7 @@ h2 {
     align-items: center;
     justify-content: center;
     text-align: center;
+    flex-direction: column;
 }
 
 .form-container {
