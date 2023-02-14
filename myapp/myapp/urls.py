@@ -15,5 +15,5 @@ urlpatterns = [
     path('process_form/', views.process_form, name ='process_form'),
     path('dashboard/', dashboard, name='dashboard'),
     path('home', views.logout_view, name='logout'),
-    path('process_temp/', views.process_temp, name='process_temp'),
+    path('process_data/', views.process_data, name='process_data'),
 ]
