@@ -27,12 +27,12 @@ class Comfort(models.Model):
         return self.Comfort
 
 class Electronic(models.Model):
-    electronics = models.CharField(max_length=150)
+    Electronic = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
 
 
     def __str__(self):
-        return self.Electronics
+        return self.Electronic
 
 class Toiletrie(models.Model):
     Toiletries = models.CharField(max_length=150)
@@ -40,7 +40,7 @@ class Toiletrie(models.Model):
 
 
     def __str__(self):
-        return self.occasion
+        return self.Toiletries
 
 class Health(models.Model):
     Health = models.CharField(max_length=150)
@@ -48,7 +48,7 @@ class Health(models.Model):
 
 
     def __str__(self):
-        return self.occasion        
+        return self.Health        
 
 class Clothing(models.Model):
     Clothing = models.CharField(max_length=150)
@@ -72,4 +72,4 @@ class Shoe(models.Model):
 
 
     def __str__(self):
-        return self.shoes      
+        return self.shoes
