@@ -81,9 +81,9 @@ class Accessorie(models.Model):
     def __str__(self):
         return self.Accessories      
 
-class Shoe(models.Model):
-    shoes = models.CharField(max_length=150)
-    shoes_description = models.CharField(max_length=150)
+class Shoes(models.Model):
+    user_Shoes = models.CharField(max_length=150)
+    description = models.CharField(max_length=150)
     shoes_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True) 
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default = 'Male')
 
