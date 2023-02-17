@@ -6,6 +6,8 @@ from django.conf import settings
 class occasion(models.Model):
     occasion = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
+    occasion_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    occasion_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
 
     def __str__(self):
@@ -14,6 +16,8 @@ class occasion(models.Model):
 class Essential(models.Model):
     Essentials = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
+    essentials_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    essentials_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
 
     def __str__(self):
@@ -22,7 +26,8 @@ class Essential(models.Model):
 class Comfort(models.Model):
     Comfort = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
-
+    comfort_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    comfort_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
     def __str__(self):
         return self.Comfort
@@ -30,6 +35,8 @@ class Comfort(models.Model):
 class Electronic(models.Model):
     Electronic = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
+    electronic_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    electronic_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
 
     def __str__(self):
@@ -38,7 +45,8 @@ class Electronic(models.Model):
 class Toiletrie(models.Model):
     Toiletries = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
-
+    toiletries_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    toiletries_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
     def __str__(self):
         return self.Toiletries
@@ -46,6 +54,8 @@ class Toiletrie(models.Model):
 class Health(models.Model):
     Health = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
+    health_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    health_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
 
     def __str__(self):
@@ -54,6 +64,9 @@ class Health(models.Model):
 class Clothing(models.Model):
     Clothing = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
+    clothing_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
+
 
 
     def __str__(self):
@@ -62,7 +75,8 @@ class Clothing(models.Model):
 class Accessorie(models.Model):
     Accessories = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
-
+    accessories_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    accessories_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
     def __str__(self):
         return self.Accessories      
@@ -70,7 +84,7 @@ class Accessorie(models.Model):
 class Shoe(models.Model):
     shoes = models.CharField(max_length=150)
     shoes_description = models.CharField(max_length=150)
-    shoes_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True) #Null = true so default is empty choice
+    shoes_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True) 
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default = 'Male')
 
 
