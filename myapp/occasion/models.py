@@ -71,5 +71,27 @@ class Shoe(models.Model):
     description = models.CharField(max_length=150)
 
 
+
     def __str__(self):
         return self.shoes
+
+class Item_Category(models.Model):
+    description = models.CharField(max_length = 150)
+
+    def __str__(self):
+        return self.description
+
+Gender_Choices = (
+    ("M", "Male"),
+    ("F", "Female"),
+    ("O", "Other"),
+)
+class Gender(models.Model):
+    gen = models.CharField(
+        max_length = 20,
+        choices = Gender_Choices,
+        default = "M"
+    )
+    #description = models.CharField(max_length = 150)
+    #def __str__(self):
+     #   return self.description
