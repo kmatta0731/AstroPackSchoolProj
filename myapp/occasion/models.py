@@ -68,8 +68,9 @@ class Accessorie(models.Model):
 
 class Shoe(models.Model):
     shoes = models.CharField(max_length=150)
-    description = models.CharField(max_length=150)
-
+    shoes_description = models.CharField(max_length=150)
+    shoes_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True) #Null = true so default is empty choice
+    shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default = 'Male')
 
 
     def __str__(self):
@@ -87,11 +88,7 @@ Gender_Choices = (
     ("O", "Other"),
 )
 class Gender(models.Model):
-    gen = models.CharField(
-        max_length = 20,
-        choices = Gender_Choices,
-        default = "M"
-    )
+    gen = models.CharField(max_length = 1,choices = Gender_Choices,default = "M")
     #description = models.CharField(max_length = 150)
-    #def __str__(self):
-     #   return self.description
+    def __str__(self):
+        return self.gen
