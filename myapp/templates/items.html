@@ -12,25 +12,47 @@
 <h1>hello</h1>
 <table>
     <tr>
-        <th>Tag</th>
-        ...
+        <th>Clothing</th>
+       
         <th>Description</th>
-        ...
-        <th>Item type</th>
-        ...
-        <th>Description</th>
+    
+        <td>clothing</td>
+  
+        
 
     </tr>
-    {% for i in occasion %}
+    {% for i in Clothing %}
     
     <tr> 
+        <td>{{ i.Clothing}}</td>
+        
+        <td>{{ i.description}}</td>
+        
+        
         <td>{{ i.occasion }}</td>
-        ...
-        <td>{{ i.description }}</td>
-        <td>{{ i.itemtype }}</td>
-        ...
-        <td>{{ i.tags }}</td>
     </tr>
     {% endfor %}
+    <table>
+        <tr>
+            <th>occasion</th>
+           
+            <th>Description</th>
+        
+            <td>col3</td>
+      
+            
+    
+        </tr>
+        {% for x in occasion %}
+        
+        <tr> 
+            <td>{{ x.occasion}}</td>
+            
+            <td>{{ x.description}}</td>
+            
+            
+            <td>{{ x.occasion }}</td>
+        </tr>
+        {% endfor %}
     </body>
 {% endblock %}

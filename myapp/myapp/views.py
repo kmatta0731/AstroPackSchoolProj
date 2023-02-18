@@ -25,7 +25,9 @@ def process_data(request):
 
 def items(request):
     query_results = occasion.objects.all()
+    query_results2 = Clothing.objects.all()
 
-    context = {'occasion':query_results}
+
+    context = {'occasion':query_results, 'Clothing': query_results2}
     return render(request,'items.html',context)
    
