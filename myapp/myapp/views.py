@@ -9,7 +9,7 @@ from django import forms
 from .forms import DestinationForm
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import user_passes_test
-
+from occasion.models import *
 def home(request):
     return render(request, 'index.html', {'form': DestinationForm})
 
@@ -23,3 +23,9 @@ def process_data(request):
     else:
         return HttpResponse("Error.")
 
+def items(request):
+    query_results = occasion.objects.all()
+
+    context = {'occasion':query_results}
+    return render(request,'items.html',context)
+   
