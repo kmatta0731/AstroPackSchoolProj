@@ -11,7 +11,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import user_passes_test
 from occasion.models import *
 def home(request):
-    return render(request, 'index.html', {'form': DestinationForm})
+    return render(request, 'index.html',{'form': DestinationForm})
 
 def process_data(request):
     if request.method == 'POST':
@@ -29,5 +29,5 @@ def items(request):
 
 
     context = {'occasion':query_results, 'Clothing': query_results2}
-    return render(request,'items.html',context)
+    return render(request,'items.html', context, )
    

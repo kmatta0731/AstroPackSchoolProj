@@ -47,7 +47,7 @@ def process_form(request):
                 )
                 return render(request, 'index.html', {'form': form})
             # process the form data here
-            return redirect('home')
+            return redirect('items')
     else:
         form = DestinationForm()
     return render(request, 'index.html', {'form': form})
