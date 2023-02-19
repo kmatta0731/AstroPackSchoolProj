@@ -56,7 +56,11 @@ function process_data(temp, destination) {
   $.ajax({
     url: '/process_data/',  // URL for the Django view
     type: 'POST',  // HTTP method for the request
-    data: {temp: temp, destination: destination},  // data to be sent with the request
+    data: {
+      temp: temp, 
+      destination: destination,
+      occasion: form.occasion.value
+    },  // data to be sent with the request
     headers: {'X-CSRFToken': csrf_token},  // include the CSRF token with the data sent
     success: function (response) {  // callback function for successful request
       console.log("Hi from the backend :)");

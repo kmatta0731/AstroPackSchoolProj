@@ -72,6 +72,7 @@ class Trip(models.Model):
     trip_userID = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default = settings.AUTH_USER_MODEL )
     trip_destination = models.CharField(max_length = 150)
     trip_weather= models.CharField(max_length = 150)
+    occasion = models.CharField(max_length=150)
 
     def __str__(self):
         return self.trip_userID.username
