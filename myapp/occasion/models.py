@@ -75,6 +75,7 @@ class Trip(models.Model):
     trip_start_date = models.CharField(max_length = 150)
     trip_end_date = models.CharField(max_length = 150)
     occasion = models.CharField(max_length=150)
+    gender = models.CharField(max_length=150)
 
     def __str__(self):
         return self.trip_userID.username

@@ -61,7 +61,8 @@ function process_data(temp, destination) {
       destination: destination,
       occasion: form.occasion.value,
       trip_start_date: form.checkin.value,
-      trip_end_date: form.checkout.value
+      trip_end_date: form.checkout.value,
+      gender: form.gender.value
     },  // data to be sent with the request
     headers: {'X-CSRFToken': csrf_token},  // include the CSRF token with the data sent
     success: function (response) {  // callback function for successful request

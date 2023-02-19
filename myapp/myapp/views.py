@@ -22,6 +22,7 @@ def process_data(request):
         occasion = request.POST.get('occasion')
         start_date = request.POST.get('trip_start_date')
         end_date = request.POST.get('trip_end_date')
+        gender = request.POST.get('gender')
         #create the trip object based on user input
         trip = Trip (
             trip_userID=user, 
@@ -29,7 +30,8 @@ def process_data(request):
             trip_weather=temp, 
             occasion=occasion,
             trip_start_date=start_date,
-            trip_end_date=end_date
+            trip_end_date=end_date,
+            gender=gender
         )
         trip.save()
         return JsonResponse({'status': 'success'})
