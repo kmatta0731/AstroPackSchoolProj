@@ -18,7 +18,7 @@ def process_data(request):
         temp = request.POST.get('temp')
         destination = request.POST.get('destination')
         user = request.user
-        trip = Trip(trip_userID=user, trip_destination=destination)
+        trip = Trip(trip_userID=user, trip_destination=destination, trip_weather=temp)
         trip.save()
         return JsonResponse({'status': 'success'})
     else:
