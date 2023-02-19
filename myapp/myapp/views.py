@@ -10,6 +10,7 @@ from .forms import DestinationForm
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import user_passes_test
 from occasion.models import *
+
 def home(request):
     return render(request, 'index.html',{'form': DestinationForm})
 
@@ -17,8 +18,10 @@ def process_data(request):
     if request.method == 'POST':
         temp = request.POST.get('temp')
         destination = request.POST.get('destination')
-        print(temp)
-        print(destination)
+        user = request.user
+        #create the trip object based on user input
+        trip = Trip(trip_userID=user, trip_destination=destination, trip_weather=temp)
+        trip.save()
         return JsonResponse({'status': 'success'})
     else:
         return HttpResponse("Error.")
@@ -26,8 +29,6 @@ def process_data(request):
 def items(request):
     query_results = occasion.objects.all()
     query_results2 = Clothing.objects.all()
-
-
     context = {'occasion':query_results, 'Clothing': query_results2}
     return render(request,'items.html', context, )
    

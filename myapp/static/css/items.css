@@ -1,3 +1,17 @@
-table, th, td {
-    border: 1px solid;
-  }
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+  width: 33.33%;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}

@@ -73,9 +73,3 @@ function scrollToForm() {
         behavior: 'smooth'
     });
 }
-
-$(document).ready(function() {
-  $('.date-field').click(function() {
-    $(this).find('input[type="date"]').trigger('click');
-  });
-});
