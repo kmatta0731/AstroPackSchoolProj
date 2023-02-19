@@ -68,13 +68,12 @@ class Shoe(models.Model):
     def __str__(self):
         return self.shoes
 
-
-class Trip(models.Model): #Currently a dummy table
+class Trip(models.Model):
     trip_userID = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default = settings.AUTH_USER_MODEL )
     trip_destination = models.CharField(max_length = 150)
     trip_weather= models.CharField(max_length = 150)
-    
+
     def __str__(self):
-        return self.trip_userID.username #Change this
+        return self.trip_userID.username
 
 
