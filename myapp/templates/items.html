@@ -1,9 +1,11 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
         {% csrf_token %}
         <title>Project394</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/items.css' %}"> 
         <link rel="stylesheet" href="{% static 'css/register.css' %}">       
     </head>
@@ -19,14 +21,13 @@
         </header>
         <div class="sign-up-form">
             <form method="POST" action="">
-                <h1 class="sign-up-text">Here is your List</h1>
+                <h1 class="sign-up-text">Packing List</h1>
                 <div class="list-container">
-                    <h1>hello</h1>
                     <table>
                         <tr>
                             <th>Clothing</th> 
                             <th>Description</th>
-                            <td>clothing</td>
+                            <th>clothing</th>
                         </tr>
                         {% for i in Clothing %}
                         <tr> 
@@ -37,8 +38,8 @@
                         {% endfor %}
                         <table>
                             <tr>
-                                <th>occasion</th>
-                                <th>Description</th>
+                                <td>occasion</td>
+                                <td>Description</td>
                                 <td>col3</td>
                             </tr>
                             {% for x in occasion %}
@@ -48,7 +49,10 @@
                                 <td>{{ x.occasion }}</td>
                             </tr>
                             {% endfor %}
-                        </body>
+                        </table>
+                    </table>
+                </div>
+            </form>
             <div class="sign-up-photo">
             </div>
         </div>

@@ -2,11 +2,9 @@
 from django.db import models
 from django.conf import settings
 
-
 class occasion(models.Model):
     occasion = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
-
 
     def __str__(self):
         return self.occasion
@@ -15,7 +13,6 @@ class Essential(models.Model):
     Essentials = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
 
-
     def __str__(self):
         return self.Essentials
 
@@ -23,14 +20,12 @@ class Comfort(models.Model):
     Comfort = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
 
-
     def __str__(self):
         return self.Comfort
 
 class Electronic(models.Model):
     Electronic = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
-
 
     def __str__(self):
         return self.Electronic
@@ -63,7 +58,6 @@ class Accessorie(models.Model):
     Accessories = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
 
-
     def __str__(self):
         return self.Accessories      
 
@@ -71,10 +65,8 @@ class Shoe(models.Model):
     shoes = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
 
-
     def __str__(self):
         return self.shoes
-
 
 class Trip(models.Model): #Currently a dummy table
     trip_userID = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default = settings.AUTH_USER_MODEL )
@@ -84,7 +76,6 @@ class Trip(models.Model): #Currently a dummy table
     trip_weather= models.CharField(max_length = 150)
     occasion = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
-
 
     def __str__(self):
         return self.description #Change this
