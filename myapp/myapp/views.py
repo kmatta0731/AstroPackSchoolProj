@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 from django.shortcuts import redirect, render
 from .login import login_view
@@ -19,8 +20,29 @@ def process_data(request):
         temp = request.POST.get('temp')
         destination = request.POST.get('destination')
         user = request.user
-        #create the trip object based on user input
-        trip = Trip(trip_userID=user, trip_destination=destination, trip_weather=temp)
+        occasion = request.POST.get('occasion')
+        start_date = request.POST.get('trip_start_date')
+        end_date = request.POST.get('trip_end_date')
+        gender = request.POST.get('gender')
+
+         # convert checkin and checkout strings to datetime objects
+        checkin_date = datetime.strptime(start_date, '%Y-%m-%d')
+        checkout_date = datetime.strptime(end_date, '%Y-%m-%d')
+
+        # calculate the number of days between the two dates
+        num_days = (checkout_date - checkin_date).days
+
+        # create the trip object based on user input
+        trip = Trip (
+            trip_userID=user, 
+            trip_destination=destination, 
+            trip_weather=temp, 
+            occasion=occasion,
+            trip_start_date=start_date,
+            trip_end_date=end_date,
+            gender=gender,
+            length_of_trip=num_days
+        )
         trip.save()
         return JsonResponse({'status': 'success'})
     else:
