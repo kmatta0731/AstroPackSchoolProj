@@ -1,0 +1,59 @@
+body {
+    background-color: rgb(247, 247, 247);
+}
+
+.user-greeting {
+    color:#404eed;
+}
+
+.nav-bar {
+    background-color: #404eed;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px;
+}
+
+.user-info {
+    height: 120px;
+    width: 80%;
+    margin: 0 auto;
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.user-greeting {
+    margin-left: 90px;
+}
+  
+.main-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-left: 20%;
+}
+  
+.mini-boxes {
+    background-color: white;
+    width:450px;
+    height:200px;
+    border-radius: 50px;
+    box-shadow: 1px 1px 10px rgb(170, 170, 170);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 45px;
+}

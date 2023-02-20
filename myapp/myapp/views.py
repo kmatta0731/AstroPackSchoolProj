@@ -25,14 +25,14 @@ def process_data(request):
         end_date = request.POST.get('trip_end_date')
         gender = request.POST.get('gender')
 
-         # Convert checkin and checkout strings to datetime objects
+         # convert checkin and checkout strings to datetime objects
         checkin_date = datetime.strptime(start_date, '%Y-%m-%d')
         checkout_date = datetime.strptime(end_date, '%Y-%m-%d')
 
-        # Calculate the number of days between the two dates
+        # calculate the number of days between the two dates
         num_days = (checkout_date - checkin_date).days
 
-        #create the trip object based on user input
+        # create the trip object based on user input
         trip = Trip (
             trip_userID=user, 
             trip_destination=destination, 
@@ -41,7 +41,7 @@ def process_data(request):
             trip_start_date=start_date,
             trip_end_date=end_date,
             gender=gender,
-            num_days=num_days
+            length_of_trip=num_days
         )
         trip.save()
         return JsonResponse({'status': 'success'})
