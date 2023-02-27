@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user_dashboard',
     'occasion',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -118,6 +119,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+IMPORT_EXPORT_USE_TRANSACTIONS =True
 
 STATIC_URL = 'static/'
 

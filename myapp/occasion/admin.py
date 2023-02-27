@@ -1,15 +1,37 @@
 from django.contrib import admin
 from .models import *
+from import_export.admin import ImportExportModelAdmin
 
-admin.site.register(occasion)
-admin.site.register(Essential)
-admin.site.register(Comfort)
-admin.site.register(Electronic)
-admin.site.register(Toiletrie)
-admin.site.register(Health)
-admin.site.register(Clothing)
-admin.site.register(Accessorie)
-admin.site.register(Shoe)
+
+class ClothingAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class occasionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class EssentialAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class ComfortAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class ElectronicAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class ToiletrieAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class HealthAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class AccessorieAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class ShoeAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+
+
+admin.site.register(occasion, occasionAdmin)
+admin.site.register(Essential, EssentialAdmin)
+admin.site.register(Comfort, ComfortAdmin)
+admin.site.register(Electronic, ElectronicAdmin)
+admin.site.register(Toiletrie, ToiletrieAdmin)
+admin.site.register(Health, HealthAdmin)
+admin.site.register(Clothing, ClothingAdmin)
+admin.site.register(Accessorie, AccessorieAdmin)
+admin.site.register(Shoe, ShoeAdmin)
 admin.site.register(Item_Category)
 admin.site.register(Gender)
 admin.site.register(Trip)
