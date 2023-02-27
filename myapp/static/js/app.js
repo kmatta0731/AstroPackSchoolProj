@@ -37,6 +37,8 @@ function autocompleteCallback() {   // callback function for the Google API
             let weather = data.current.weather[0].description;
             weatherOutput.innerHTML= ("Current temp: " + temp + " degrees" + "<br>" + " Weather: " + weather);          
 
+            temp_range = checkWeatherRange(temp);
+            console.log(checkWeatherRange(temp));
             process_data(temp, destination);  // call function to send over data to the backend
           })
           .catch(error => {
@@ -62,7 +64,8 @@ function process_data(temp, destination) {
       occasion: form.occasion.value,
       trip_start_date: form.checkin.value,
       trip_end_date: form.checkout.value,
-      gender: form.gender.value
+      gender: form.gender.value,
+      temp_range: temp_range,
     },  // data to be sent with the request
     headers: {'X-CSRFToken': csrf_token},  // include the CSRF token with the data sent
     success: function (response) {  // callback function for successful request
@@ -79,4 +82,18 @@ function scrollToForm() {
     document.querySelector('.bottom-container').scrollIntoView({ 
         behavior: 'smooth'
     });
+}
+
+function checkWeatherRange(temp) {
+  if (temp < 50) {
+    temp_range = "Cold";
+  }
+  else if (temp > 50 && temp < 75) {
+    temp_range = "Warm";
+  }
+  else {
+    temp_range = "Hot";
+  }
+
+  return temp_range;
 }

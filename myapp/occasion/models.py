@@ -116,6 +116,7 @@ class Trip(models.Model):
     occasion = models.CharField(max_length=150)
     gender = models.CharField(max_length=150)
     length_of_trip = models.IntegerField()
+    temp_range = models.CharField(max_length=150, default='')
 
     def __str__(self):
         return self.trip_userID.username
@@ -140,3 +141,12 @@ class Generated_list(models.Model):
 
     def __str__(self):
         return self.gen_description #change this later
+    
+class Weather(models.Model):
+    temperature_range = models.CharField(max_length=50)
+    description = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.temperature_range
+
+

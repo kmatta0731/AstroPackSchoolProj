@@ -24,6 +24,7 @@ def process_data(request):
         start_date = request.POST.get('trip_start_date')
         end_date = request.POST.get('trip_end_date')
         gender = request.POST.get('gender')
+        temp_range = request.POST.get('temp_range')
 
          # convert checkin and checkout strings to datetime objects
         checkin_date = datetime.strptime(start_date, '%Y-%m-%d')
@@ -41,7 +42,8 @@ def process_data(request):
             trip_start_date=start_date,
             trip_end_date=end_date,
             gender=gender,
-            length_of_trip=num_days
+            length_of_trip=num_days,
+            temp_range=temp_range,
         )
         trip.save()
         return JsonResponse({'status': 'success'})
