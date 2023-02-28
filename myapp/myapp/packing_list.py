@@ -10,7 +10,7 @@ def generate_packing_list(trip):
     print(temp_range)
     
     # Get the items based on occasion and gender
-    clothing_items = Clothing.objects.filter(clothing_gender__gen=gender)
+    clothing_items = Clothing.objects.filter(clothing_gender__gen=gender, clothing_temp=temp_range)
     accessory_items = Accessorie.objects.filter(accessories_gender__gen=gender)
     toiletry_items = Toiletrie.objects.filter(toiletries_gender__gen=gender)
     electronic_items = Electronic.objects.filter(electronic_gender__gen=gender)

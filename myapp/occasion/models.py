@@ -66,7 +66,7 @@ class Clothing(models.Model):
     description = models.CharField(max_length=150)
     clothing_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
-
+    clothing_temp = models.CharField(max_length=150, default='')
 
 
     def __str__(self):
