@@ -16,8 +16,6 @@ class Essential(models.Model):
     Essentials = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     essentials_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
-    essentials_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
-
 
     def __str__(self):
         return self.Essentials
@@ -25,6 +23,7 @@ class Essential(models.Model):
 class Comfort(models.Model):
     Comfort = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
+    clothing_temp = models.CharField(max_length=150, default='')
     comfort_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
     comfort_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
@@ -65,7 +64,7 @@ class Clothing(models.Model):
     description = models.CharField(max_length=150)
     clothing_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
-
+    clothing_temp = models.CharField(max_length=150, default='')
 
 
     def __str__(self):
@@ -81,10 +80,16 @@ class Accessorie(models.Model):
         return self.Accessories     
 
 class Shoe(models.Model):
+    SHOE_TEMP_RANGE_CHOICES = [
+        ('cold', 'Cold'),
+        ('warm', 'Warm'),
+        ('hot', 'Hot'),
+    ]
     shoes = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     shoes_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True) 
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True)
+    shoes_temperature = models.CharField(max_length=10, choices=SHOE_TEMP_RANGE_CHOICES, default='Warm')
 
     def __str__(self):
         return self.shoes
@@ -96,12 +101,12 @@ class Item_Category(models.Model):
         return self.description
     
 Gender_Choices = (
-    ("M", "Male"),
-    ("F", "Female"),
-    ("O", "Other"),
+    ("male", "male"),
+    ("female", "female"),
+    ("other", "other"),
 )
 class Gender(models.Model):
-    gen = models.CharField(max_length = 1,choices = Gender_Choices, null = True)
+    gen = models.CharField(max_length = 150,choices = Gender_Choices, null = True)
     #description = models.CharField(max_length = 150)
     def __str__(self):
         return self.gen
@@ -116,6 +121,7 @@ class Trip(models.Model):
     occasion = models.CharField(max_length=150)
     gender = models.CharField(max_length=150)
     length_of_trip = models.IntegerField()
+    temp_range = models.CharField(max_length=150, default='')
 
     def __str__(self):
         return self.trip_userID.username
@@ -140,3 +146,12 @@ class Generated_list(models.Model):
 
     def __str__(self):
         return self.gen_description #change this later
+    
+class Weather(models.Model):
+    temperature_range = models.CharField(max_length=50)
+    description = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.temperature_range
+
+

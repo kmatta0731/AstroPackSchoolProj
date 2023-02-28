@@ -11,6 +11,7 @@ from .forms import DestinationForm
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import user_passes_test
 from occasion.models import *
+from .packing_list import *
 
 def home(request):
     return render(request, 'index.html',{'form': DestinationForm})
@@ -24,6 +25,7 @@ def process_data(request):
         start_date = request.POST.get('trip_start_date')
         end_date = request.POST.get('trip_end_date')
         gender = request.POST.get('gender')
+        temp_range = request.POST.get('temp_range')
 
          # convert checkin and checkout strings to datetime objects
         checkin_date = datetime.strptime(start_date, '%Y-%m-%d')
@@ -41,10 +43,15 @@ def process_data(request):
             trip_start_date=start_date,
             trip_end_date=end_date,
             gender=gender,
-            length_of_trip=num_days
+            length_of_trip=num_days,
+            temp_range=temp_range,
         )
         trip.save()
-        return JsonResponse({'status': 'success'})
+
+        packing_list = generate_packing_list(trip)
+        return render(request, 'items.html', {'packing_list': packing_list})
+
+        # return JsonResponse({'status': 'success'})
     else:
         return HttpResponse("Error.")
 
@@ -52,5 +59,13 @@ def items(request):
     query_results = occasion.objects.all()
     query_results2 = Clothing.objects.all()
     context = {'occasion':query_results, 'Clothing': query_results2}
-    return render(request,'items.html', context, )
-   
+
+    # generate packing list and add it to context
+    trip = Trip.objects.filter(trip_userID=request.user).latest('id')
+    packing_list = generate_packing_list(trip)
+
+    print(packing_list)
+
+    context['packing_list'] = packing_list
+
+    return render(request, 'items.html', context)

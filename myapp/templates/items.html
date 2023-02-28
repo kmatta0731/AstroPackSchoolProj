@@ -23,34 +23,14 @@
             <form method="POST" action="">
                 <h1 class="sign-up-text">Packing List</h1>
                 <div class="list-container">
-                    <table>
-                        <tr>
-                            <th>Clothing</th> 
-                            <th>Description</th>
-                            <th>clothing</th>
-                        </tr>
-                        {% for i in Clothing %}
-                        <tr> 
-                            <td>{{ i.Clothing}}</td>    
-                            <td>{{ i.description}}</td> 
-                            <td>{{ i.occasion }}</td>
-                        </tr>
-                        {% endfor %}
-                        <table>
-                            <tr>
-                                <td>occasion</td>
-                                <td>Description</td>
-                                <td>col3</td>
-                            </tr>
-                            {% for x in occasion %}
-                            <tr> 
-                                <td>{{ x.occasion}}</td>
-                                <td>{{ x.description}}</td>
-                                <td>{{ x.occasion }}</td>
-                            </tr>
+                    {% for category, items in packing_list.items %}
+                        <h2>{{ category }}</h2>
+                        <ul>
+                            {% for item in items %}
+                                <li>{{ item }}</li>
                             {% endfor %}
-                        </table>
-                    </table>
+                        </ul>
+                    {% endfor %}
                 </div>
             </form>
             <div class="sign-up-photo">
