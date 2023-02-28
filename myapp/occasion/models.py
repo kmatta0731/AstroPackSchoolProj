@@ -25,6 +25,7 @@ class Essential(models.Model):
 class Comfort(models.Model):
     Comfort = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
+    clothing_temp = models.CharField(max_length=150, default='')
     comfort_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
     comfort_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
@@ -81,10 +82,16 @@ class Accessorie(models.Model):
         return self.Accessories     
 
 class Shoe(models.Model):
+    SHOE_TEMP_RANGE_CHOICES = [
+        ('cold', 'Cold'),
+        ('warm', 'Warm'),
+        ('hot', 'Hot'),
+    ]
     shoes = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     shoes_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True) 
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True)
+    shoes_temperature = models.CharField(max_length=10, choices=SHOE_TEMP_RANGE_CHOICES, default='Warm')
 
     def __str__(self):
         return self.shoes
@@ -96,12 +103,12 @@ class Item_Category(models.Model):
         return self.description
     
 Gender_Choices = (
-    ("M", "Male"),
-    ("F", "Female"),
-    ("O", "Other"),
+    ("male", "male"),
+    ("female", "female"),
+    ("other", "other"),
 )
 class Gender(models.Model):
-    gen = models.CharField(max_length = 1,choices = Gender_Choices, null = True)
+    gen = models.CharField(max_length = 150,choices = Gender_Choices, null = True)
     #description = models.CharField(max_length = 150)
     def __str__(self):
         return self.gen
