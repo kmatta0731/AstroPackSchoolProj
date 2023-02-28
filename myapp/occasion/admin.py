@@ -21,6 +21,10 @@ class AccessorieAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
 class ShoeAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
+class Item_CategoryAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class GenderAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
 
 
 admin.site.register(occasion, occasionAdmin)
@@ -32,7 +36,7 @@ admin.site.register(Health, HealthAdmin)
 admin.site.register(Clothing, ClothingAdmin)
 admin.site.register(Accessorie, AccessorieAdmin)
 admin.site.register(Shoe, ShoeAdmin)
-admin.site.register(Item_Category)
-admin.site.register(Gender)
+admin.site.register(Item_Category, Item_CategoryAdmin)
+admin.site.register(Gender, GenderAdmin)
 admin.site.register(Trip)
 admin.site.register(Generated_list)
