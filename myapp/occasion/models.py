@@ -16,8 +16,6 @@ class Essential(models.Model):
     Essentials = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     essentials_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
-    essentials_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
-
 
     def __str__(self):
         return self.Essentials
