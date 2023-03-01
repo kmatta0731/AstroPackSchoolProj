@@ -6,8 +6,6 @@ class occasion(models.Model):
     occasion = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     occasion_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
-    occasion_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
-
 
     def __str__(self):
         return self.occasion
@@ -34,8 +32,6 @@ class Electronic(models.Model):
     Electronic = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     electronic_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
-    electronic_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
-
 
     def __str__(self):
         return self.Electronic
@@ -55,7 +51,6 @@ class Health(models.Model):
     health_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
     health_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
 
-
     def __str__(self):
         return self.Health      
 
@@ -65,7 +60,6 @@ class Clothing(models.Model):
     clothing_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
     clothing_temp = models.CharField(max_length=150, default='')
-
 
     def __str__(self):
         return self.Clothing                
@@ -110,7 +104,6 @@ class Gender(models.Model):
     #description = models.CharField(max_length = 150)
     def __str__(self):
         return self.gen
-    
 
 class Trip(models.Model):
     trip_userID = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default = settings.AUTH_USER_MODEL )
@@ -125,7 +118,6 @@ class Trip(models.Model):
 
     def __str__(self):
         return self.trip_userID.username
-
 
 class Generated_list(models.Model):
     gen_tripID = models.ForeignKey('Trip', on_delete = models.CASCADE, null = True)
@@ -146,12 +138,3 @@ class Generated_list(models.Model):
 
     def __str__(self):
         return self.gen_description #change this later
-    
-class Weather(models.Model):
-    temperature_range = models.CharField(max_length=50)
-    description = models.CharField(max_length=150)
-
-    def __str__(self):
-        return self.temperature_range
-
-
