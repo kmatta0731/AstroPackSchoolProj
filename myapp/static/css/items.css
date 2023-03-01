@@ -1,17 +1,42 @@
-table {
-  border-collapse: collapse;
-  table-layout: fixed;
+.list-container {
+  margin-left: 20%;
+  color: black;
+  background-color: pink;
+}
+
+.packing-list-container {
+  margin-top: 100px;
+}
+
+li {
+  list-style-type: none;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #aaa;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  margin-right: 10px;
+  margin-left: -20px;
+  margin-bottom: 3px;
+}
+
+input[type="checkbox"]:checked:before {
+  content: '\2714';
+  display: block;
+  position: absolute;
+  top: -1px;
+  left: 0;
   width: 100%;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd;
-  width: 33.33%;
-}
-
-th {
-  background-color: #f2f2f2;
-  color: #333;
+  height: 100%;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
 }

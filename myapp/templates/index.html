@@ -31,7 +31,7 @@
             <div class="slogan">
                 {% if user.is_authenticated %}
                     <h1 class="username">Welcome, {{ user.username }}!</h1>
-                    <button class="sign-up-button" id="get-started-button" onclick="scrollToForm()">Make a new list</button>                        
+                    <a href="{% url 'dashboard' %}"><button class="sign-up-button" id="get-started-button">Make a new list</button></a>    
                 {% else %}
                     <h1 class="slogan-heading">The Ultimate<br>Packing List</h1>
                     <h2 class="slogan-text">
@@ -39,60 +39,13 @@
                         With a few simple trip details, we will generate a comprehensive list of must-haves and recommended items for your next adventure. 
                         Get ready to pack with ease!
                     </h2>
-                    <button class="sign-up-button" id="get-started-button" onclick="scrollToForm()">Get Started</button>                    
+                    <!-- <button class="sign-up-button" id="get-started-button" onclick="scrollToForm()">Get Started</button>                     -->
+                    <a href="{% url 'register' %}"><button class="sign-up-button" id="get-started-button">Get Started</button></a>    
                 {% endif %}
                 </div>
             <div class="main-image-container">
                 <img src="{% static 'img/blueAstronaut.jpg' %}" id="astro-image">
             </div>
         </div>
-        <div class="bottom-container">
-            <div class="form-container">
-                <h1 class="form-heading">Be prepared for your next adventure</h1>
-                <form action="{% url 'process_form' %}" method="post" class="generator-form">
-                    {% csrf_token %}
-                    <div class="destination-input">
-                        <span class="material-symbols-outlined">
-                            travel_explore
-                        </span>
-                        {{ form.destination }}
-                    </div>
-                    <!-- <span class="material-symbols-outlined">
-                        calendar_month
-                    </span>                    -->
-                    <div class="checkin-checkout-fields">
-                        {{ form.checkin }}
-                        {{ form.checkout }}
-                    </div>               
-                    <div class="occasion-field">
-                        <!-- <span class="material-symbols-outlined">
-                            work
-                        </span> -->
-                        <span class="material-symbols-outlined">
-                            cake
-                        </span>
-                        {{ form.occasion }}
-                    </div>         
-                    <div class="gender-field">
-                        <span class="material-symbols-outlined">
-                            person
-                        </span>
-                        {{ form.gender }}
-                    </div>
-                    {% if form.errors %}
-                        <div class="form-error">
-                            {{ form.errors }}
-                        </div>
-                    {% endif %}
-                    <input type="submit" value="Submit" class="sign-up-button">
-                </form>
-            </div>
-            <div id="weather-message"></div>
-        </div>
-        <footer>
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="{% static 'js/app.js' %}"></script>                                 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD-VajPdA2hcwGdDkC0JHzjKq94MYi7tI&libraries=places&callback=autocompleteCallback"></script>
     </body>
 </html>
