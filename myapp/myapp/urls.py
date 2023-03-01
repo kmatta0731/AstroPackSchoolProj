@@ -3,7 +3,7 @@ from django.urls import path, include
 from myapp.views import home
 from . import views
 from django.urls import path
-from user_dashboard.views import dashboard
+from user_dashboard.views import dashboard, saved_trips
 from django.shortcuts import render
 
 urlpatterns = [
@@ -17,4 +17,5 @@ urlpatterns = [
     path('home', views.logout_view, name='logout'),
     path('process_data/', views.process_data, name='process_data'),
     path('items/', views.items, name='items'),
+    path('saved-trips/', saved_trips, name='saved_trips'),
 ]
