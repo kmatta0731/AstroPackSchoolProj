@@ -1,4 +1,6 @@
 from occasion.models import *
+from django.db.models import Q
+
 
 def generate_packing_list(trip):
     destination = trip.trip_destination
@@ -12,14 +14,14 @@ def generate_packing_list(trip):
     print(activities)
     
     # Get the items based on occasion and gender
-    clothing_items = Clothing.objects.filter(clothing_gender__gen=gender, clothing_temp=temp_range)
-    accessory_items = Accessorie.objects.filter(accessories_gender__gen=gender)
-    toiletry_items = Toiletrie.objects.filter(toiletries_gender__gen=gender)
+    clothing_items = Clothing.objects.filter(Q(clothing_gender__gen=gender) | Q(clothing_gender__gen='other'), clothing_temp=temp_range)
+    accessory_items = Accessorie.objects.filter(Q(accessories_gender__gen=gender) | Q(accessories_gender__gen='other'))
+    toiletry_items = Toiletrie.objects.filter(Q(toiletries_gender__gen=gender) | Q(toiletries_gender__gen='other'))
     electronic_items = Electronic.objects.all()
     essential_items = Essential.objects.all()
-    comfort_items = Comfort.objects.filter(comfort_gender__gen=gender)
-    health_items = Health.objects.filter(health_gender__gen=gender)
-    shoe_items = Shoe.objects.filter(shoes_gender__gen=gender, shoes_temperature=temp_range)
+    comfort_items = Comfort.objects.filter(Q(comfort_gender__gen= gender) | Q(comfort_gender__gen = 'other') )
+    health_items = Health.objects.filter(Q(health_gender__gen=gender) | Q(health_gender__gen= 'other'))
+    shoe_items = Shoe.objects.filter(Q(shoes_gender__gen=gender) | Q(shoes_gender__gen='other') , shoes_temperature=temp_range)
     
     # Create the packing list dictionary
     packing_list = {
