@@ -50,6 +50,16 @@
                         </span>
                         {{ form.gender }}
                     </div>
+                    <div class="activity-field">
+                        <span class="material-symbols-outlined">
+                            hiking
+                        </span>
+                        <div class="checkbox-row">
+                            {% for activity in form.activities %}
+                                <label><input type="checkbox" class="input-checkbox" name="activities" value="{{ activity.name }}"> {{ activity }}</label>
+                            {% endfor %}          
+                        </div>
+                    </div>  
                     {% if form.errors %}
                         <div class="form-error">
                             {{ form.errors }}

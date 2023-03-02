@@ -5,7 +5,7 @@ from django.conf import settings
 class occasion(models.Model):
     occasion = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
-    occasion_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    occasion_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null=True)
 
     def __str__(self):
         return self.occasion
@@ -13,7 +13,7 @@ class occasion(models.Model):
 class Essential(models.Model):
     Essentials = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
-    essentials_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
+    essentials_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null=True)
 
     def __str__(self):
         return self.Essentials
@@ -23,7 +23,7 @@ class Comfort(models.Model):
     description = models.CharField(max_length=150)
     clothing_temp = models.CharField(max_length=150, default='')
     comfort_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
-    comfort_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
+    comfort_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
 
     def __str__(self):
         return self.Comfort
@@ -40,7 +40,7 @@ class Toiletrie(models.Model):
     Toiletries = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     toiletries_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
-    toiletries_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
+    toiletries_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
 
     def __str__(self):
         return self.Toiletries
@@ -49,7 +49,7 @@ class Health(models.Model):
     Health = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     health_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
-    health_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
+    health_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, blank=True) 
 
     def __str__(self):
         return self.Health      
@@ -58,7 +58,7 @@ class Clothing(models.Model):
     Clothing = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     clothing_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
-    clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
+    clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
     clothing_temp = models.CharField(max_length=150, default='')
 
     def __str__(self):
@@ -68,7 +68,7 @@ class Accessorie(models.Model):
     Accessories = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     accessories_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
-    accessories_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True) 
+    accessories_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
 
     def __str__(self):
         return self.Accessories     
@@ -81,9 +81,9 @@ class Shoe(models.Model):
     ]
     shoes = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
-    shoes_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True) 
-    shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True)
-    shoes_temperature = models.CharField(max_length=10, choices=SHOE_TEMP_RANGE_CHOICES, default='Warm')
+    shoes_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null=True) 
+    shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True)
+    shoes_temperature = models.CharField(max_length=10, default='Warm')
 
     def __str__(self):
         return self.shoes
@@ -100,10 +100,16 @@ Gender_Choices = (
     ("other", "other"),
 )
 class Gender(models.Model):
-    gen = models.CharField(max_length = 150,choices = Gender_Choices, null = True)
+    gen = models.CharField(max_length = 150,choices = Gender_Choices, null=True)
     #description = models.CharField(max_length = 150)
     def __str__(self):
         return self.gen
+    
+class Activities(models.Model):
+    name = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
 
 class Trip(models.Model):
     trip_userID = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default = settings.AUTH_USER_MODEL )
@@ -115,6 +121,7 @@ class Trip(models.Model):
     gender = models.CharField(max_length=150)
     length_of_trip = models.IntegerField()
     temp_range = models.CharField(max_length=150, default='')
+    activities = models.ManyToManyField(Activities) # using ManyToManyField
 
     def __str__(self):
         return self.trip_userID.username
@@ -138,3 +145,4 @@ class Generated_list(models.Model):
 
     def __str__(self):
         return self.gen_description #change this later
+

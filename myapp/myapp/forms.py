@@ -25,6 +25,7 @@ class DestinationForm(forms.Form):
     checkin = forms.DateField(initial=date.today(), widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input', 'id':'check-in-field'}))
     checkout = forms.DateField(initial=(date.today() + timedelta(days=7)),widget=forms.DateInput(attrs={'type': 'date', 'class': 'date-input'}))
     occasion = forms.CharField(widget=forms.Select(choices=OCCASIONS, attrs={'placeholder': 'Choose an occasion', 'class': 'occasion-dropdown'}))
+    activities = forms.MultipleChoiceField(choices=[('beach', 'Beach'), ('camping', 'Camping'), ('hiking', 'Hiking'), ('skiing', 'Skiing/Snowboarding')])
     gender = forms.CharField(required=False,widget=forms.Select(choices=GENDERS, attrs={'placeholder': 'Choose an occasion', 'class': 'gender-dropdown'}))
 
     def clean(self):  # makes sure that checkout date is after checkin
