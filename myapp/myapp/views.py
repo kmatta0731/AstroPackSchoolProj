@@ -26,6 +26,8 @@ def process_data(request):
         end_date = request.POST.get('trip_end_date')
         gender = request.POST.get('gender')
         temp_range = request.POST.get('temp_range')
+        activities = request.POST.getlist('activities')
+
 
          # convert checkin and checkout strings to datetime objects
         checkin_date = datetime.strptime(start_date, '%Y-%m-%d')
@@ -47,6 +49,12 @@ def process_data(request):
             temp_range=temp_range,
         )
         trip.save()
+
+        for activity in activities:
+            trip.activities.add(Activities.objects.get(name=activity))
+            print(activity)
+
+
 
         packing_list = generate_packing_list(trip)
         return render(request, 'items.html', {'packing_list': packing_list})

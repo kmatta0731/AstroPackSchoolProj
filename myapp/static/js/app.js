@@ -55,6 +55,11 @@ function autocompleteCallback() {   // callback function for the Google API
 // send a request to the backend server to send data like temp, destination, travel dates, etc.
 let csrf_token = document.getElementsByName("csrfmiddlewaretoken")[0].value;
 function process_data(temp, destination) {
+  let activities = [];
+  document.querySelectorAll('input[name="activities"]:checked').forEach(function(activity) {
+    activities.push(activity.value);
+  });
+  console.log(activities);
   $.ajax({
     url: '/process_data/',  // URL for the Django view
     type: 'POST',  // HTTP method for the request
@@ -66,10 +71,12 @@ function process_data(temp, destination) {
       trip_end_date: form.checkout.value,
       gender: form.gender.value,
       temp_range: temp_range,
+      activities: activities, // Add activities to the data object
+
     },  // data to be sent with the request
     headers: {'X-CSRFToken': csrf_token},  // include the CSRF token with the data sent
     success: function (response) {  // callback function for successful request
-      console.log("Hi from the backend :)");
+      console.log("Success :)");
     },
     error: function (xhr, status, error) {  // callback function for failed request
       console.error(error);
