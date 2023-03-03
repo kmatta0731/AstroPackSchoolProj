@@ -55,10 +55,9 @@
                             hiking
                         </span>
                         <div class="checkbox-row">
-                            {% for activity in form.activities %}
-                                <label><input type="checkbox" class="input-checkbox" name="activities" value="{{ activity.name }}"> {{ activity }}</label>
-                            {% endfor %}          
+                            {{ form.activities }}
                         </div>
+                        
                     </div>  
                     {% if form.errors %}
                         <div class="form-error">
