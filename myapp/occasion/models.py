@@ -2,6 +2,12 @@
 from django.db import models
 from django.conf import settings
 
+class Activities(models.Model):
+    name = models.CharField(max_length=150)
+    
+    def __str__(self):
+        return self.name
+
 class occasion(models.Model):
     occasion = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
@@ -74,16 +80,12 @@ class Accessorie(models.Model):
         return self.Accessories     
 
 class Shoe(models.Model):
-    SHOE_TEMP_RANGE_CHOICES = [
-        ('cold', 'Cold'),
-        ('warm', 'Warm'),
-        ('hot', 'Hot'),
-    ]
     shoes = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
     shoes_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null=True) 
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True)
     shoes_temperature = models.CharField(max_length=10, default='Warm')
+    shoes_activities = models.CharField(max_length=150, default='')
 
     def __str__(self):
         return self.shoes
@@ -104,12 +106,6 @@ class Gender(models.Model):
     #description = models.CharField(max_length = 150)
     def __str__(self):
         return self.gen
-    
-class Activities(models.Model):
-    name = models.CharField(max_length=50)
-    
-    def __str__(self):
-        return self.name
 
 class Trip(models.Model):
     trip_userID = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default = settings.AUTH_USER_MODEL )
