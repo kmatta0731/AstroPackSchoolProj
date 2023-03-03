@@ -25,19 +25,27 @@
             </div>
         </header>
         <div class="main-container">
-            <div class="packing-list-container">
-                {% for category, items in packing_list.items %}
+            <div class="category-row">
+               
+                  {% for category, items in packing_list.items|slice:":packing_list.items|length//2" %}
+                  
+                  <div class="category-column">
                     <h2>{{ category }}</h2>
                     <ul>
                         {% for item in items %}
-                            <li>
-                                <input type="checkbox" id="{{ item }}" name="{{ item }}">
-                                <label for="{{ item }}">{{ item }}</label>
-                            </li>
+                        <li>
+                        <input type="checkbox" id="{{ item }}" name="{{ item }}">
+                        <label for="{{ item }}">{{ item }}</label>
+                        </li>
                         {% endfor %}
                     </ul>
-                {% endfor %}
-            </div>
+                  </div>
+                  {% endfor %}
+                   
+                
+               
+              </div>
+              
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{% static 'js/app.js' %}"></script>                                 
