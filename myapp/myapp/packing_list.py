@@ -21,7 +21,7 @@ def generate_packing_list(trip):
     toiletry_items = Toiletrie.objects.filter(Q(toiletries_gender__gen=gender) | Q(toiletries_gender__gen='other'))
     electronic_items = Electronic.objects.all()
     essential_items = Essential.objects.all()
-    comfort_items = Comfort.objects.filter(Q(comfort_gender__gen= gender) | Q(comfort_gender__gen = 'other') )
+    comfort_items = Comfort.objects.all()
     health_items = Health.objects.filter(Q(health_gender__gen=gender) | Q(health_gender__gen= 'other'))
     shoe_items = Shoe.objects.filter(Q(shoes_gender__gen=gender) | Q(shoes_gender__gen='other') , shoes_temperature=temp_range )
     

@@ -8,14 +8,6 @@ class Activities(models.Model):
     def __str__(self):
         return self.name
 
-class occasion(models.Model):
-    occasion = models.CharField(max_length=150)
-    description = models.CharField(max_length=150)
-    occasion_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null=True)
-
-    def __str__(self):
-        return self.occasion
-
 class Essential(models.Model):
     Essentials = models.CharField(max_length=150)
     description = models.CharField(max_length=150)
@@ -66,6 +58,8 @@ class Clothing(models.Model):
     clothing_item_category = models.ForeignKey('Item_Category', on_delete = models.CASCADE, null = True)
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
     clothing_temp = models.CharField(max_length=150, default='')
+    clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
+    clothing_occasion = models.CharField(max_length=150, default='Leisure')
 
     def __str__(self):
         return self.Clothing                
@@ -86,6 +80,7 @@ class Shoe(models.Model):
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True)
     shoes_temperature = models.CharField(max_length=10, default='Warm')
     shoes_activities = models.CharField(max_length=150, default='')
+    shoes_occasion = models.CharField(max_length=150, default='Leisure')
 
     def __str__(self):
         return self.shoes
@@ -132,7 +127,6 @@ class Generated_list(models.Model):
     gen_electronic = models.ForeignKey('Electronic', on_delete = models.CASCADE, null = True)
     gen_essentials = models.ForeignKey('Essential', on_delete = models.CASCADE, null = True)
     gen_health = models.ForeignKey('Health', on_delete = models.CASCADE, null = True)
-    gen_occasion = models.ForeignKey('occasion', on_delete = models.CASCADE, null = True)
     gen_shoe = models.ForeignKey('Shoe', on_delete = models.CASCADE, null = True)
     gen_toiletries = models.ForeignKey('Toiletrie', on_delete = models.CASCADE, null = True)
     gen_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True)
