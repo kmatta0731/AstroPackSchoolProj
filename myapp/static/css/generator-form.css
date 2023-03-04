@@ -64,16 +64,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .checkbox-row {
     display: flex;
-    flex-direction: row;
     margin: 15px 0px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#activity-checkbox {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
 .checkbox-row label {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 7px;
+    flex-grow: 1 !important;
+
 }
+
 
 input[type="submit"] {
     margin-top: 10px;

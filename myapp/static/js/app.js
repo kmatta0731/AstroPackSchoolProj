@@ -58,23 +58,31 @@ function process_data(temp, destination) {
   let activities = [];
   document.querySelectorAll('input[name="activities"]:checked').forEach(function(activity) {
     activities.push(activity.value);
+    console.log(activity.value);
   });
   console.log(activities);
+
+  let formdata = new FormData();
+  formdata.append('temp', temp);
+  formdata.append('destination', destination);
+  formdata.append('occasion', form.occasion.value);
+  formdata.append('trip_start_date', form.checkin.value);
+  formdata.append('trip_end_date', form.checkout.value);
+  formdata.append('gender', form.gender.value);
+  formdata.append('temp_range', temp_range);
+  activities.forEach(function(activity) {
+    formdata.append('activities', activity);
+  });
+
+  let csrf_token = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+
   $.ajax({
     url: '/process_data/',  // URL for the Django view
     type: 'POST',  // HTTP method for the request
-    data: {
-      temp: temp, 
-      destination: destination,
-      occasion: form.occasion.value,
-      trip_start_date: form.checkin.value,
-      trip_end_date: form.checkout.value,
-      gender: form.gender.value,
-      temp_range: temp_range,
-      activities: activities, // Add activities to the data object
-
-    },  // data to be sent with the request
+    data: formdata,  // data to be sent with the request
     headers: {'X-CSRFToken': csrf_token},  // include the CSRF token with the data sent
+    processData: false,  // prevent jQuery from processing the data
+    contentType: false,  // prevent jQuery from setting the content type
     success: function (response) {  // callback function for successful request
       console.log("Success :)");
     },
