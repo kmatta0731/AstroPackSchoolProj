@@ -63,6 +63,15 @@ class Clothing(models.Model):
 
     def __str__(self):
         return self.Clothing                
+    
+class Equipment(models.Model):
+    Equipment = models.CharField(max_length=150)
+    clothing_temp = models.CharField(max_length=150, default='')
+    clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
+    clothing_occasion = models.CharField(max_length=150, default='Leisure')
+
+    def __str__(self):
+        return self.Equipment                
 
 class Accessorie(models.Model):
     Accessories = models.CharField(max_length=150)
