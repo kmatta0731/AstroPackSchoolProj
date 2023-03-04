@@ -16,8 +16,6 @@ class Essential(models.Model):
 
 class Comfort(models.Model):
     Comfort = models.CharField(max_length=150)
-    clothing_temp = models.CharField(max_length=150, default='')
-    comfort_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
 
     def __str__(self):
         return self.Comfort
