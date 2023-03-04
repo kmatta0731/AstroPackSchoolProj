@@ -54,7 +54,6 @@ class Clothing(models.Model):
     
 class Equipment(models.Model):
     Equipment = models.CharField(max_length=150)
-    clothing_temp = models.CharField(max_length=150, default='')
     clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
     clothing_occasion = models.CharField(max_length=150, default='Leisure')
 
