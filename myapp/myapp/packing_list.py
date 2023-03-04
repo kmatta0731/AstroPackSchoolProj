@@ -31,6 +31,13 @@ def generate_packing_list(trip):
             continue
         included_items.append(item)
     shoe_items = included_items
+
+    included_items2 = []     
+    for item in clothing_items:  # ------ filter out shoes that match activity user selected ----- #
+        if not activities.filter(name__iexact=item.clothing_activity).exists():
+            continue
+        included_items2.append(item)
+    clothing_items = included_items2
     
     # Create the packing list dictionary
     packing_list = {
