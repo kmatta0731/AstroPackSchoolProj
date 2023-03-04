@@ -61,15 +61,9 @@ def process_data(request):
         return HttpResponse("Error.")
 
 def items(request):
-    query_results2 = Clothing.objects.all()
-    context = {'Clothing': query_results2}
-
-    # generate packing list and add it to context
     trip = Trip.objects.filter(trip_userID=request.user).latest('id')
     packing_list = generate_packing_list(trip)
-
+    context = {'packing_list': packing_list}
     print(packing_list)
-
-    context['packing_list'] = packing_list
-
+    
     return render(request, 'items.html', context)
