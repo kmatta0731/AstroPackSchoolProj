@@ -25,12 +25,12 @@ def generate_packing_list(trip):
     health_items = Health.objects.filter(Q(health_gender__gen=gender) | Q(health_gender__gen= 'other'))
     shoe_items = Shoe.objects.filter(Q(shoes_gender__gen=gender) | Q(shoes_gender__gen='other') & Q(shoes_activities = 'None') | Q(shoes_activities = activities)  , shoes_temperature=temp_range )
     
-   # included_items = []     
-    #for item in shoe_items:  # ------ filter out shoes that match activity user selected ----- #
-     #   if not activities.filter(name__iexact=item.shoes_activities).exists():
-      #      continue
-       # included_items.append(item)
-    #shoe_items = included_items
+    included_items = []     
+    for item in shoe_items:  # ------ filter out shoes that match activity user selected ----- #
+            if not activities.filter(name__iexact=item.shoes_activities).exists():
+                continue
+            included_items.append(item)
+            shoe_items = included_items
 
     #included_items2 = []     
     #for item in clothing_items:  # ------ filter out shoes that match activity user selected ----- #
