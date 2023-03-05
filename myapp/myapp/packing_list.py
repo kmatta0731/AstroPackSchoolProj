@@ -11,12 +11,13 @@ def generate_packing_list(trip):
 
     print(gender)
     print(temp_range)
+    print("Occasion   " + occasion)
 
     for activity in trip.activities.all():
         print(activity.name)
     
     # Get the items based on occasion and gender
-    clothing_items = Clothing.objects.filter(Q(clothing_gender__gen=gender) | Q(clothing_gender__gen='other'), Q(clothing_temp=temp_range) | Q(clothing_temp = 'Warm') )
+    clothing_items = Clothing.objects.filter(Q(clothing_gender__gen=gender) | Q(clothing_gender__gen='other'), Q(clothing_temp=temp_range) | Q(clothing_temp = 'Warm'), clothing_occasion=occasion )
     accessory_items = Accessorie.objects.filter(Q(accessories_gender__gen=gender) | Q(accessories_gender__gen='other'))
     toiletry_items = Toiletrie.objects.filter(Q(toiletries_gender__gen=gender) | Q(toiletries_gender__gen='other'))
     electronic_items = Electronic.objects.all()

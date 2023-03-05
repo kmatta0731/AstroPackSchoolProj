@@ -5,13 +5,13 @@ from django.shortcuts import render, redirect
 
 OCCASIONS = [
     ('', 'Choose an occasion'),
-    ('wedding', 'Wedding'),
-    ('anniversary', 'Anniversary'),
-    ('music_festival', 'Music Festival'),
-    ('birthday', 'Birthday'),
-    ('business', 'Business'),
-    ('holidays', 'Holidays'),
-    ('no_reason', 'Leisure'),
+    (1, 'Wedding'),
+    (2, 'Anniversary'),
+    (3, 'Music Festival'),
+    (4, 'Birthday'),
+    (5, 'Business'),
+    (6, 'Holidays'),
+    (7, 'Leisure'),
 ]
 
 GENDERS = [

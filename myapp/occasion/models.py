@@ -7,6 +7,12 @@ class Activities(models.Model):
     
     def __str__(self):
         return self.name
+    
+class Occasion(models.Model):
+    occasion = models.CharField(max_length=150)
+    
+    def __str__(self):
+        return self.occasion
 
 class Essential(models.Model):
     Essentials = models.CharField(max_length=150)
@@ -46,7 +52,9 @@ class Clothing(models.Model):
     clothing_temp = models.CharField(max_length=150, default='')
     clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
     # clothing_activity = models.ManyToManyField(Activities)
-    clothing_occasion = models.CharField(max_length=150, default='Leisure')
+    # clothing_occasion = models.CharField(max_length=150, default='Leisure')
+    clothing_occasion = models.ManyToManyField(Occasion)
+
 
     def __str__(self):
         return self.Clothing                
