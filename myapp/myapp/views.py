@@ -12,6 +12,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import user_passes_test
 from occasion.models import *
 from .packing_list import *
+from user_dashboard.saved_trips import *
 
 def home(request):
     return render(request, 'index.html',{'form': DestinationForm})
@@ -74,3 +75,7 @@ def items(request):
     context['packing_list'] = packing_list
 
     return render(request, 'items.html', context)
+
+def saved_trips(request):
+    trips= Trip.objects.all()
+    return render(request, "user_dashboard/templates/saved_trips.html", {'trips': trips})

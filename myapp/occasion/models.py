@@ -118,6 +118,7 @@ class Trip(models.Model):
     length_of_trip = models.IntegerField()
     temp_range = models.CharField(max_length=150, default='')
     activities = models.ManyToManyField(Activities) # using ManyToManyField
+    #itemList = models.ManyToManyField(Generated_list)
 
     def __str__(self):
         return self.trip_userID.username

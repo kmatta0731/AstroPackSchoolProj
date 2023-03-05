@@ -17,5 +17,5 @@ urlpatterns = [
     path('home', views.logout_view, name='logout'),
     path('process_data/', views.process_data, name='process_data'),
     path('items/', views.items, name='items'),
-    path('saved-trips/', saved_trips, name='saved_trips'),
+    path('saved-trips/', views.saved_trips, name='saved_trips'),
 ]
