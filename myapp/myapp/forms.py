@@ -21,10 +21,10 @@ GENDERS = [
 ]
 
 ACTIVITY_CHOICES = [
-    ('Beach', 'Beach'), 
-    ('Camping', 'Camping'), 
-    ('Hiking', 'Hiking'), 
-    ('Skiing', 'Skiing/Snowboarding')
+    (1, 'Beach'), 
+    (2, 'Camping'), 
+    (3, 'Hiking'), 
+    (4, 'Skiing/Snowboarding')
 ]
 
 class DestinationForm(forms.Form):

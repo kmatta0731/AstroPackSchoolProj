@@ -13,6 +13,12 @@ class Occasion(models.Model):
     
     def __str__(self):
         return self.occasion
+    
+class TempRange(models.Model):
+    temp = models.CharField(max_length=150)
+    
+    def __str__(self):
+        return self.temp
 
 class Essential(models.Model):
     Essentials = models.CharField(max_length=150)
@@ -49,7 +55,8 @@ class Health(models.Model):
 class Clothing(models.Model):
     Clothing = models.CharField(max_length=150)
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
-    clothing_temp = models.CharField(max_length=150, default='')
+    # clothing_temp = models.CharField(max_length=150, default='')
+    clothing_temp = models.ManyToManyField(TempRange)
     clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
     # clothing_activity = models.ManyToManyField(Activities)
     # clothing_occasion = models.CharField(max_length=150, default='Leisure')
@@ -106,7 +113,7 @@ class Trip(models.Model):
     occasion = models.CharField(max_length=150)
     gender = models.CharField(max_length=150)
     length_of_trip = models.IntegerField()
-    temp_range = models.CharField(max_length=150, default='')
+    temp_range = models.CharField(max_length=150)
     activities = models.ManyToManyField(Activities) # using ManyToManyField
 
     def __str__(self):

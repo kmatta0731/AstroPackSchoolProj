@@ -12,12 +12,14 @@ def generate_packing_list(trip):
     print(gender)
     print(temp_range)
     print("Occasion   " + occasion)
+    print("TEMP RANGE:  " + temp_range)
+
 
     for activity in trip.activities.all():
         print(activity.name)
     
     # Get the items based on occasion and gender
-    clothing_items = Clothing.objects.filter(Q(clothing_gender__gen=gender) | Q(clothing_gender__gen='other'), Q(clothing_temp=temp_range) | Q(clothing_temp = 'Warm'), clothing_occasion=occasion )
+    clothing_items = Clothing.objects.filter(Q(clothing_gender__gen=gender) | Q(clothing_gender__gen='other'), clothing_occasion=occasion, clothing_temp=temp_range)
     accessory_items = Accessorie.objects.filter(Q(accessories_gender__gen=gender) | Q(accessories_gender__gen='other'))
     toiletry_items = Toiletrie.objects.filter(Q(toiletries_gender__gen=gender) | Q(toiletries_gender__gen='other'))
     electronic_items = Electronic.objects.all()
@@ -26,19 +28,19 @@ def generate_packing_list(trip):
     health_items = Health.objects.filter(Q(health_gender__gen=gender) | Q(health_gender__gen= 'other'))
     shoe_items = Shoe.objects.filter(Q(shoes_gender__gen=gender) | Q(shoes_gender__gen='other') & Q(shoes_activities = 'None') | Q(shoes_activities = activities)  , shoes_temperature=temp_range )
     
-    included_items = []     
-    for item in shoe_items:  # ------ filter out shoes that match activity user selected ----- #
-            if not activities.filter(name__iexact=item.shoes_activities).exists():
-                continue
-            included_items.append(item)
-            shoe_items = included_items
+    # included_items = []     
+    # for item in shoe_items:  # ------ filter out shoes that match activity user selected ----- #
+    #         if not activities.filter(name__iexact=item.shoes_activities).exists():
+    #             continue
+    #         included_items.append(item)
+    #         shoe_items = included_items
 
-    #included_items2 = []     
-    #for item in clothing_items:  # ------ filter out shoes that match activity user selected ----- #
-     #   if not activities.filter(name__iexact=item.clothing_activity).exists():
-      #      continue
-       # included_items2.append(item)
-    #clothing_items = included_items2
+    # included_items2 = []     
+    # for item in clothing_items:  # ------ filter out shoes that match activity user selected ----- #
+    #    if not activities.filter(name__iexact=item.clothing_activity).exists():
+    #        continue
+    #    included_items2.append(item)
+    # clothing_items = included_items2
     
     # Create the packing list dictionary
     packing_list = {
