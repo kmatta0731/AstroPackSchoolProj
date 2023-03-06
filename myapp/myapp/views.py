@@ -29,6 +29,8 @@ def process_data(request):
         temp_range = request.POST.get('temp_range')
         activities = request.POST.getlist('activities')  # retrieve a list of selected activities
 
+
+        print("TEMP RANGE:  " + temp_range)
          # convert checkin and checkout strings to datetime objects
         checkin_date = datetime.strptime(start_date, '%Y-%m-%d')
         checkout_date = datetime.strptime(end_date, '%Y-%m-%d')

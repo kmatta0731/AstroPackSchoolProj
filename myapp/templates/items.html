@@ -26,9 +26,7 @@
         </header>
         <div class="main-container">
             <div class="category-row">
-               
                   {% for category, items in packing_list.items|slice:":packing_list.items|length//2" %}
-                  
                   <div class="category-column">
                     <h2>{{ category }}</h2>
                     <ul>
@@ -41,11 +39,7 @@
                     </ul>
                   </div>
                   {% endfor %}
-                   
-                
-               
               </div>
-              
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{% static 'js/app.js' %}"></script>                                 
