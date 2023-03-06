@@ -85,18 +85,12 @@ function process_data(temp, destination) {
     contentType: false,  // prevent jQuery from setting the content type
     success: function (response) {  // callback function for successful request
       console.log("Success :)");
+      window.location.href = "items";
     },
     error: function (xhr, status, error) {  // callback function for failed request
       console.error(error);
     }
   });
-}
-
-// scroll to the generator form when user clicks "Get Started" button on home page
-function scrollToForm() {
-    document.querySelector('.bottom-container').scrollIntoView({ 
-        behavior: 'smooth'
-    });
 }
 
 function checkWeatherRange(temp) {

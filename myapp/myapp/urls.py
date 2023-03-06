@@ -18,4 +18,5 @@ urlpatterns = [
     path('process_data/', views.process_data, name='process_data'),
     path('items/', views.items, name='items'),
     path('saved-trips/', views.saved_trips, name='saved_trips'),
+    path('dashboard/items', views.items, name='items'),
 ]
