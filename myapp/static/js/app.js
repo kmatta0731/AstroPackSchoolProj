@@ -103,7 +103,7 @@ function checkWeatherRange(temp) {
   if (temp < 50) {
     temp_range = "Cold";
   }
-  else if (temp > 50 && temp < 75) {
+  else if (temp > 50 && temp < 80) {
     temp_range = "Warm";
   }
   else {
