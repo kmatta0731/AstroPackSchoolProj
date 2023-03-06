@@ -55,7 +55,7 @@ def generate_packing_list(trip):
     }
 
     copy_list = Generated_list (
-        #gen_tripID = trip.trip_userID,
+        gen_tripID = trip,
         gen_qty_of_clothing = trip.length_of_trip
     )
     copy_list.save()
