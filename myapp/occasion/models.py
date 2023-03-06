@@ -55,13 +55,9 @@ class Health(models.Model):
 class Clothing(models.Model):
     Clothing = models.CharField(max_length=150)
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
-    # clothing_temp = models.CharField(max_length=150, default='')
     clothing_temp = models.ManyToManyField(TempRange)
     clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
-    # clothing_activity = models.ManyToManyField(Activities)
-    # clothing_occasion = models.CharField(max_length=150, default='Leisure')
     clothing_occasion = models.ManyToManyField(Occasion)
-
 
     def __str__(self):
         return self.Clothing                
@@ -86,7 +82,6 @@ class Shoe(models.Model):
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True)
     shoes_temperature = models.CharField(max_length=10, default='Warm')
     shoes_activities = models.CharField(max_length=150, default='')
-    # shoes_activities = models.ManyToManyField(Activities)
     shoes_occasion = models.CharField(max_length=150, default='Leisure')
 
     def __str__(self):

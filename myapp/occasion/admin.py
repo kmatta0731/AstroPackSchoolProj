@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import *
 from import_export.admin import ImportExportModelAdmin
+from myapp.resources import ClothingResource
+from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
+from import_export.formats import base_formats
 
 class ClothingAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
