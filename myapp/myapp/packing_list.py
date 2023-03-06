@@ -7,7 +7,7 @@ def generate_packing_list(trip):
     temp_range = trip.temp_range
     occasion = trip.occasion
     gender = trip.gender
-    activities = trip.activities
+    activities = trip.activities.all()
 
     print(gender)
     print(temp_range)
@@ -19,7 +19,7 @@ def generate_packing_list(trip):
         print(activity.name)
     
     # Get the items based on occasion and gender
-    clothing_items = Clothing.objects.filter(Q(clothing_gender__gen=gender) | Q(clothing_gender__gen='other'), clothing_occasion=occasion, clothing_temp=temp_range)
+    clothing_items = Clothing.objects.filter(Q(clothing_gender__gen=gender) | Q(clothing_gender__gen='other'), clothing_occasion=occasion, clothing_temp=temp_range, clothing_activity__in=activities)
     accessory_items = Accessorie.objects.filter(Q(accessories_gender__gen=gender) | Q(accessories_gender__gen='other'))
     toiletry_items = Toiletrie.objects.filter(Q(toiletries_gender__gen=gender) | Q(toiletries_gender__gen='other'))
     electronic_items = Electronic.objects.all()
@@ -28,19 +28,10 @@ def generate_packing_list(trip):
     health_items = Health.objects.filter(Q(health_gender__gen=gender) | Q(health_gender__gen= 'other'))
     shoe_items = Shoe.objects.filter(Q(shoes_gender__gen=gender) | Q(shoes_gender__gen='other'), shoes_occasion=occasion, shoes_temperature=temp_range )
     
-    # included_items = []     
-    # for item in shoe_items:  # ------ filter out shoes that match activity user selected ----- #
-    #         if not activities.filter(name__iexact=item.shoes_activities).exists():
-    #             continue
-    #         included_items.append(item)
-    #         shoe_items = included_items
-
-    # included_items2 = []     
-    # for item in clothing_items:  # ------ filter out shoes that match activity user selected ----- #
-    #    if not activities.filter(name__iexact=item.clothing_activity).exists():
-    #        continue
-    #    included_items2.append(item)
-    # clothing_items = included_items2
+    for activity in trip.activities.all():
+            activity_num = activity.name
+            print(activity_num)
+            clothing_items = Clothing.objects.filter(clothing_activity__in=[activity_num])
     
     # Create the packing list dictionary
     packing_list = {
