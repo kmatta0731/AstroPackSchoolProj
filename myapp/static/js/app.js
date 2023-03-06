@@ -35,7 +35,7 @@ function autocompleteCallback() {   // callback function for the Google API
             let temp = data.current.temp;
             temp = kelvinToFahrenheit(temp);
             let weather = data.current.weather[0].description;
-            weatherOutput.innerHTML= ("Current temp: " + temp + " degrees" + "<br>" + " Weather: " + weather);          
+            // weatherOutput.innerHTML= ("Current temp: " + temp + " degrees" + "<br>" + " Weather: " + weather);          
 
             temp_range = checkWeatherRange(temp);
             console.log("JAVASCRIPT TEMP: " + checkWeatherRange(temp));
