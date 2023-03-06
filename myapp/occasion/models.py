@@ -116,7 +116,7 @@ class Trip(models.Model):
         return self.trip_userID.username
 
 class Generated_list(models.Model):
-    gen_tripID = models.ForeignKey('Trip', on_delete = models.CASCADE, null = True)
+    gen_tripID = models.ForeignKey(Trip, on_delete = models.CASCADE, null = True)
     gen_accessories = models.ManyToManyField(Accessorie)
     gen_clothing = models.ManyToManyField(Clothing)    
     gen_qty_of_clothing = models.CharField(max_length=150) # Change this later
@@ -129,4 +129,4 @@ class Generated_list(models.Model):
     gen_equipment = models.ManyToManyField(Equipment)
 
     def __str__(self):
-        return 'actual string'
+        return 'Packing List for Trip: {}'.format(self.gen_tripID.trip_destination)
