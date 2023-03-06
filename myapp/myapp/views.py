@@ -9,7 +9,7 @@ from .logout import logout_view
 from django import forms
 from .forms import DestinationForm
 from django.http import HttpResponse, JsonResponse
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 from occasion.models import *
 from .packing_list import *
 from user_dashboard.saved_trips import *
@@ -70,5 +70,6 @@ def items(request):
     return render(request, 'items.html', context)
 
 def saved_trips(request):
-    trips= Trip.objects.all()
+    user_id = request.user.id
+    trips= Trip.objects.filter(trip_userID= user_id)
     return render(request, "user_dashboard/templates/saved_trips.html", {'trips': trips})

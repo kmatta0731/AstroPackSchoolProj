@@ -28,17 +28,9 @@
             <div class="saved-Trips-container">
                 <h1> Here are your Trips </h1>
                 <br>
+                
                 {% block content %}
                     {% for trip in trips %}
-                    <!-- Testing to make sure it prints trip.trip_userID and user.username for debugging purposes-->
-                    <h2>{{ trip.trip_userID }}</h2>
-                    <h1>{{ user.username }}</h1>
-                        <!-- If statement to print out only the signed in users trips-->
-                        {% if trip.trip_userID == user.username %}
-                        <!-- have also tried {% if {{ trip.trip_userID }} == {{ user.username }} %} -->
-                        <!-- have also tried {% if '{{ trip.trip_userID }}' == '{{ user.username }}' %} -->
-                        <!-- have also tried {% if {{ 'trip.trip_userID' }}' == {{ 'user.username' }} %} -->
-                        <!-- have also tried {% if 'trip.trip_userID' == 'user.username' %} -->
 
                             <h2>{{ trip.trip_destination }}</h2>
                             <ul>
@@ -48,7 +40,6 @@
                             <a href="{% url 'items' %}" style = "color: black;" ><li>List</li></a>
                             <br>
                             </ul>
-                        {% endif %}
                     {% endfor %}
                 {% endblock %}
             </div>
