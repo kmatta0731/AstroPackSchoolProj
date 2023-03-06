@@ -35,7 +35,6 @@ class DestinationForm(forms.Form):
     gender = forms.CharField(required=False,widget=forms.Select(choices=GENDERS, attrs={'placeholder': 'Choose an occasion', 'class': 'gender-dropdown'}))
     activities = forms.MultipleChoiceField(choices=ACTIVITY_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'id':'activity-checkbox'}))
 
-
     def clean(self):  # makes sure that checkout date is after checkin
         cleaned_data = super().clean()
         checkin = cleaned_data.get('checkin')

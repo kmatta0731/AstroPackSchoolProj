@@ -1,7 +1,6 @@
 from occasion.models import *
 from django.db.models import Q
 
-
 def generate_packing_list(trip):
     destination = trip.trip_destination
     temp_range = trip.temp_range
@@ -9,11 +8,8 @@ def generate_packing_list(trip):
     gender = trip.gender
     activities = trip.activities.all()
 
-    for activity in trip.activities.all():
-        print(activity.name)
-    
     # Get the items based on occasion and gender
-    clothing_items = Clothing.objects.filter(Q(clothing_gender__gen=gender) | Q(clothing_gender__gen='other'), clothing_occasion=occasion, clothing_temp=temp_range, clothing_activity__in=activities)
+    clothing_items = Clothing.objects.filter(Q(clothing_gender__gen=gender) | Q(clothing_gender__gen='other'), clothing_occasion=occasion, clothing_temp=temp_range, clothing_activity__in=activities).distinct()
     accessory_items = Accessorie.objects.filter(Q(accessories_gender__gen=gender) | Q(accessories_gender__gen='other'))
     toiletry_items = Toiletrie.objects.filter(Q(toiletries_gender__gen=gender) | Q(toiletries_gender__gen='other'))
     electronic_items = Electronic.objects.all()
