@@ -56,7 +56,8 @@ class Clothing(models.Model):
     Clothing = models.CharField(max_length=150)
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
     clothing_temp = models.ManyToManyField(TempRange)
-    clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
+    clothing_activity = models.ManyToManyField(Activities)
+    # clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
     clothing_occasion = models.ManyToManyField(Occasion)
 
     def __str__(self):
@@ -130,4 +131,3 @@ class Generated_list(models.Model):
 
     def __str__(self):
         return self.gen_tripID #change this later
-
