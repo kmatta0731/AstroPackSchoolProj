@@ -56,20 +56,42 @@ def generate_packing_list(trip):
 
     copy_list = Generated_list (
         #gen_tripID = trip.trip_userID,
-        gen_accessories = accessory_items[0],
-        #gen_clothing = clothing_items[0],
         #gen_qty_of_clothing =
-        #gen_comfort = 
-        #gen_electronic = 
-        #gen_essentials = 
-        #gen_health = 
-        #gen_shoe = 
-        #gen_toiletries = 
     )
     copy_list.save()
     clothingLoop(clothing_items, copy_list)
+    comfortLoop(comfort_items, copy_list)
+    electronicLoop(electronic_items, copy_list)
+    essentialsLoop(essential_items, copy_list)
+    healthLoop(health_items, copy_list)
+    shoeLoop(shoe_items, copy_list)
+    toiletriesLoop(toiletry_items, copy_list)
     return packing_list
 
 def clothingLoop(clothing_items, copy_list):
     for item in clothing_items: 
         copy_list.gen_clothing.add(item)
+
+def comfortLoop(comfort_items, copy_list):
+    for item in comfort_items: 
+        copy_list.gen_comfort.add(item)
+
+def electronicLoop(electronic_items, copy_list):
+    for item in electronic_items: 
+        copy_list.gen_electronic.add(item)
+
+def essentialsLoop(essential_items, copy_list):
+    for item in essential_items: 
+        copy_list.gen_essentials.add(item)
+
+def healthLoop(health_items, copy_list):
+    for item in health_items: 
+        copy_list.gen_health.add(item)
+
+def shoeLoop(shoe_items, copy_list):
+    for item in shoe_items: 
+        copy_list.gen_shoe.add(item)
+
+def toiletriesLoop(toiletry_items, copy_list):
+    for item in toiletry_items: 
+        copy_list.gen_toiletries.add(item)
