@@ -64,8 +64,8 @@ class Clothing(models.Model):
     
 class Equipment(models.Model):
     Equipment = models.CharField(max_length=150)
-    clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
-    clothing_occasion = models.CharField(max_length=150, default='Leisure')
+    equipment_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
+    equipment_occasion = models.CharField(max_length=150, default='Leisure')
 
     def __str__(self):
         return self.Equipment                
@@ -126,6 +126,7 @@ class Generated_list(models.Model):
     gen_health = models.ManyToManyField(Health)
     gen_shoe = models.ManyToManyField(Shoe)
     gen_toiletries = models.ManyToManyField(Toiletrie)
+    gen_equipment = models.ManyToManyField(Equipment)
 
     def __str__(self):
         return 'actual string'
