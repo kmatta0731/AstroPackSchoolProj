@@ -6,6 +6,7 @@
         <title>Dashboard</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
         <link rel="stylesheet" href="{% static 'dashboard.css' %}"/>
+        <link rel="stylesheet" href="{% static 'saved_trips.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/generator-form.css' %}"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -26,22 +27,22 @@
         </header>
         <div class="main-container">
             <div class="saved-Trips-container">
-                <h1> Here are your Trips </h1>
                 <br>
-                
                 {% block content %}
-                    {% for trip in trips %}
-
-                            <h2>{{ trip.trip_destination }}</h2>
-                            <ul>
-                            <li> Days of trip: {{ trip.length_of_trip }}</li>
-                            <li> occasion: {{ trip.occasion }}</li>
-                            <li> Weather: {{ trip.trip_weather }}</li>
-                            <a href="{% url 'items' %}" style = "color: black;" ><li>List</li></a>
-                            <br>
-                            </ul>
-                    {% endfor %}
-                {% endblock %}
+                <div class="trips-container">
+                  {% for trip in trips %}
+                    <div class="trip-item">
+                      <h2>{{ trip.trip_destination }}</h2>
+                      <ul>
+                        <li><strong>Date:</strong> {{ trip.trip_start_date }}</li>
+                        <!-- <li><strong>Occasion:</strong> {{ trip.occasion }}</li> -->
+                        <li><strong>Weather:</strong> {{ trip.trip_weather }} °F</li>
+                        <li><a href="{% url 'items' %}"><i class="fas fa-list"></i>  View packing list</a></li>
+                      </ul>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endblock %}              
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -1,0 +1,37 @@
+.trip-item {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .trip-item h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .trip-item ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .trip-item ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .trip-item ul li strong {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .trip-item ul li a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .trip-item ul li a:hover {
+    text-decoration: underline;
+  }
+  

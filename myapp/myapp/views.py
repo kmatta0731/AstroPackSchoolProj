@@ -71,5 +71,5 @@ def items(request):
 
 def saved_trips(request):
     user_id = request.user.id
-    trips= Trip.objects.filter(trip_userID= user_id)
+    trips = Trip.objects.filter(trip_userID=user_id).order_by('-id')
     return render(request, "user_dashboard/templates/saved_trips.html", {'trips': trips})
