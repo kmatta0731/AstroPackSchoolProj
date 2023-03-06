@@ -28,10 +28,10 @@ def generate_packing_list(trip):
     health_items = Health.objects.filter(Q(health_gender__gen=gender) | Q(health_gender__gen= 'other'))
     shoe_items = Shoe.objects.filter(Q(shoes_gender__gen=gender) | Q(shoes_gender__gen='other'), shoes_occasion=occasion, shoes_temperature=temp_range )
     
-    for activity in trip.activities.all():
-            activity_num = activity.name
-            print(activity_num)
-            clothing_items = Clothing.objects.filter(clothing_activity__in=[activity_num])
+    # for activity in trip.activities.all():
+    #         activity_num = activity.name
+    #         print(activity_num)
+    #         clothing_items = Clothing.objects.filter(activity_num)
     
     # Create the packing list dictionary
     packing_list = {
