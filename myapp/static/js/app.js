@@ -38,7 +38,7 @@ function autocompleteCallback() {   // callback function for the Google API
             weatherOutput.innerHTML= ("Current temp: " + temp + " degrees" + "<br>" + " Weather: " + weather);          
 
             temp_range = checkWeatherRange(temp);
-            console.log(checkWeatherRange(temp));
+            console.log("JAVASCRIPT TEMP: " + checkWeatherRange(temp));
             process_data(temp, destination);  // call function to send over data to the backend
           })
           .catch(error => {
@@ -101,14 +101,15 @@ function scrollToForm() {
 
 function checkWeatherRange(temp) {
   if (temp < 50) {
-    temp_range = "Cold";
+    temp_range = 1;
   }
   else if (temp > 50 && temp < 80) {
-    temp_range = "Warm";
+    temp_range = 2;
   }
   else {
-    temp_range = "Hot";
+    temp_range = 3;
   }
 
+  console.log("JAVASCRIPT TEMP: " + temp_range);
   return temp_range;
 }

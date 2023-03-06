@@ -7,6 +7,18 @@ class Activities(models.Model):
     
     def __str__(self):
         return self.name
+    
+class Occasion(models.Model):
+    occasion = models.CharField(max_length=150)
+    
+    def __str__(self):
+        return self.occasion
+    
+class TempRange(models.Model):
+    temp = models.CharField(max_length=150)
+    
+    def __str__(self):
+        return self.temp
 
 class Essential(models.Model):
     Essentials = models.CharField(max_length=150)
@@ -43,10 +55,10 @@ class Health(models.Model):
 class Clothing(models.Model):
     Clothing = models.CharField(max_length=150)
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
-    clothing_temp = models.CharField(max_length=150, default='')
-    clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
-    # clothing_activity = models.ManyToManyField(Activities)
-    clothing_occasion = models.CharField(max_length=150, default='Leisure')
+    clothing_temp = models.ManyToManyField(TempRange)
+    clothing_activity = models.ManyToManyField(Activities)
+    # clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
+    clothing_occasion = models.ManyToManyField(Occasion)
 
     def __str__(self):
         return self.Clothing                
@@ -71,7 +83,6 @@ class Shoe(models.Model):
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True)
     shoes_temperature = models.CharField(max_length=10, default='Warm')
     shoes_activities = models.CharField(max_length=150, default='')
-    # shoes_activities = models.ManyToManyField(Activities)
     shoes_occasion = models.CharField(max_length=150, default='Leisure')
 
     def __str__(self):
@@ -98,7 +109,7 @@ class Trip(models.Model):
     occasion = models.CharField(max_length=150)
     gender = models.CharField(max_length=150)
     length_of_trip = models.IntegerField()
-    temp_range = models.CharField(max_length=150, default='')
+    temp_range = models.CharField(max_length=150)
     activities = models.ManyToManyField(Activities) # using ManyToManyField
 
     def __str__(self):
@@ -120,4 +131,3 @@ class Generated_list(models.Model):
 
     def __str__(self):
         return self.gen_tripID #change this later
-
