@@ -5,8 +5,8 @@
     <head>
         <title>Dashboard</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/items.css' %}"/>
         <link rel="stylesheet" href="{% static 'dashboard.css' %}"/>
-        <link rel="stylesheet" href="{% static 'saved_trips.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/generator-form.css' %}"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -17,7 +17,6 @@
             <div class="nav-links">
                 <ul>
                     <a href="{% url 'dashboard' %}"><li>Create New List</li></a>
-                    <a href="{% url 'items' %}"><li>Current Trip</li></a>
                     <a href="{% url 'saved_trips' %}"><li>Saved Trips</li></a>
                     <a href="{% url 'logout' %}" data-page="logout">
                         <li>Log out <i class="fas fa-sign-out-alt"></i></li>
@@ -26,23 +25,35 @@
             </div>
         </header>
         <div class="main-container">
-            <div class="saved-Trips-container">
-                <br>
-                {% block content %}
-                <div class="trips-container">
-                  {% for trip in trips %}
-                    <div class="trip-item">
-                      <h2>{{ trip.trip_destination }}</h2>
-                      <ul>
-                        <li><strong>Date:</strong> {{ trip.trip_start_date }}</li>
-                        <!-- <li><strong>Occasion:</strong> {{ trip.occasion }}</li> -->
-                        <li><strong>Weather:</strong> {{ trip.trip_weather }} °F</li>
-                        <li><a href="{% url 'saved_list' %}"><i class="fas fa-list"></i>  View packing list</a></li>
-                      </ul>
-                    </div>
+            <div class="category-row">
+                <H1> Here is your saved list</H1>
+                  <!--{% for category, items in savedList.items|slice:":savedList.items|length//2" %}
+                  <div class="category-column">
+                    <h2>{{ category }}</h2>
+                    <ul>
+                        {% for item in items %}
+                        <li>
+                        <input type="checkbox" id="{{ item }}" name="{{ item }}">
+                        <label for="{{ item }}">{{ item }}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                  </div>
+                  {% endfor %}-->
+                  {% for items in saved_list2|slice:":saved_list2|length//2" %}
+                  <div class="category-column">
+                        
+                    <ul>
+                        {% for item in items %}
+                        <li>
+                        <input type="checkbox" id="{{ item }}" name="{{ item }}">
+                        <label for="{{ item }}">{{ item }}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                  </div>
+
                   {% endfor %}
-                </div>
-              {% endblock %}              
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

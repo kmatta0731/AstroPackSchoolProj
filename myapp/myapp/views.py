@@ -73,3 +73,9 @@ def saved_trips(request):
     user_id = request.user.id
     trips = Trip.objects.filter(trip_userID=user_id).order_by('-id')
     return render(request, "user_dashboard/templates/saved_trips.html", {'trips': trips})
+
+def saved_list(request):
+    savedList = Trip.objects.filter(trip_userID=request.user).latest('id')
+    saved_list2 = getcopyList()
+    print(saved_list2)
+    return render(request, 'saved_list.html', {'saved_List': saved_list2})

@@ -1,6 +1,8 @@
 from occasion.models import *
 from django.db.models import Q
 
+copy_list2 = None
+
 def generate_packing_list(trip):
     destination = trip.trip_destination
     temp_range = trip.temp_range
@@ -49,7 +51,16 @@ def generate_packing_list(trip):
     accessoryLoop(accessory_items, copy_list)
     equipmentLoop(equipment_items, copy_list)
 
+    setcopyList(copy_list)
+
     return packing_list
+
+def setcopyList(copy_list):
+    copy_list2 = copy_list
+
+def getcopyList():
+    return copy_list2
+
 
 def clothingLoop(clothing_items, copy_list):
     copy_list.gen_clothing.add(*clothing_items)

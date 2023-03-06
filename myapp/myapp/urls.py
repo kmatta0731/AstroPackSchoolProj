@@ -19,4 +19,6 @@ urlpatterns = [
     path('items/', views.items, name='items'),
     path('saved-trips/', views.saved_trips, name='saved_trips'),
     path('dashboard/items', views.items, name='items'),
+    path('saved-list/', views.saved_list, name='saved_list'),
+
 ]
