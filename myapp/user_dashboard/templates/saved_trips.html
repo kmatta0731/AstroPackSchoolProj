@@ -24,6 +24,26 @@
                 </ul>
             </div>
         </header>
+        <div class="main-container">
+            <div class="saved-Trips-container">
+                <h1> Here are your Trips </h1>
+                <br>
+                
+                {% block content %}
+                    {% for trip in trips %}
+
+                            <h2>{{ trip.trip_destination }}</h2>
+                            <ul>
+                            <li> Days of trip: {{ trip.length_of_trip }}</li>
+                            <li> occasion: {{ trip.occasion }}</li>
+                            <li> Weather: {{ trip.trip_weather }}</li>
+                            <a href="{% url 'items' %}" style = "color: black;" ><li>List</li></a>
+                            <br>
+                            </ul>
+                    {% endfor %}
+                {% endblock %}
+            </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{% static 'js/app.js' %}"></script>                                 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD-VajPdA2hcwGdDkC0JHzjKq94MYi7tI&libraries=places&callback=autocompleteCallback"></script>
