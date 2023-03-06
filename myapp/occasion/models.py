@@ -57,7 +57,6 @@ class Clothing(models.Model):
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
     clothing_temp = models.ManyToManyField(TempRange)
     clothing_activity = models.ManyToManyField(Activities)
-    # clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
     clothing_occasion = models.ManyToManyField(Occasion)
 
     def __str__(self):
@@ -81,10 +80,8 @@ class Accessorie(models.Model):
 class Shoe(models.Model):
     shoes = models.CharField(max_length=150)
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True)
-    # shoes_temperature = models.CharField(max_length=10, default='Warm')
     shoes_temperature = models.ManyToManyField(TempRange)
     shoes_activities = models.CharField(max_length=150, default='')
-    # shoes_occasion = models.CharField(max_length=150, default='Leisure')
     shoes_occasion = models.ManyToManyField(Occasion)
     
     def __str__(self):
@@ -114,7 +111,6 @@ class Trip(models.Model):
     temp_range = models.CharField(max_length=150)
     activities = models.ManyToManyField(Activities) # using ManyToManyField
     
-
     def __str__(self):
         return self.trip_userID.username
 
