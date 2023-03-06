@@ -118,7 +118,7 @@ class Trip(models.Model):
 class Generated_list(models.Model):
     gen_tripID = models.ForeignKey('Trip', on_delete = models.CASCADE, null = True)
     gen_accessories = models.ForeignKey('Accessorie', on_delete = models.CASCADE, null = True)
-    gen_clothing = models.ForeignKey('Clothing', on_delete = models.CASCADE, null = True)
+    gen_clothing = models.ManyToManyField(Clothing)    
     gen_qty_of_clothing = models.CharField(max_length=150) # Change this later
     gen_comfort = models.ForeignKey('Comfort', on_delete = models.CASCADE, null = True)
     gen_electronic = models.ForeignKey('Electronic', on_delete = models.CASCADE, null = True)
@@ -126,8 +126,6 @@ class Generated_list(models.Model):
     gen_health = models.ForeignKey('Health', on_delete = models.CASCADE, null = True)
     gen_shoe = models.ForeignKey('Shoe', on_delete = models.CASCADE, null = True)
     gen_toiletries = models.ForeignKey('Toiletrie', on_delete = models.CASCADE, null = True)
-    gen_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, null = True)
-    gen_weather = models.CharField(max_length=150) #Change this later
 
     def __str__(self):
-        return self.gen_tripID #change this later
+        return 'actual string'

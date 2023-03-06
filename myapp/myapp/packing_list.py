@@ -54,4 +54,22 @@ def generate_packing_list(trip):
         'Essentials': essential_items,
     }
 
+    copy_list = Generated_list (
+        #gen_tripID = trip.trip_userID,
+        gen_accessories = accessory_items[0],
+        #gen_clothing = clothing_items[0],
+        #gen_qty_of_clothing =
+        #gen_comfort = 
+        #gen_electronic = 
+        #gen_essentials = 
+        #gen_health = 
+        #gen_shoe = 
+        #gen_toiletries = 
+    )
+    copy_list.save()
+    clothingLoop(clothing_items, copy_list)
     return packing_list
+
+def clothingLoop(clothing_items, copy_list):
+    for item in clothing_items: 
+        copy_list.gen_clothing.add(item)
