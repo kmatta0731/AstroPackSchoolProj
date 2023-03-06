@@ -57,7 +57,6 @@ class Clothing(models.Model):
     clothing_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True) 
     clothing_temp = models.ManyToManyField(TempRange)
     clothing_activity = models.ManyToManyField(Activities)
-    # clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
     clothing_occasion = models.ManyToManyField(Occasion)
 
     def __str__(self):
@@ -65,8 +64,8 @@ class Clothing(models.Model):
     
 class Equipment(models.Model):
     Equipment = models.CharField(max_length=150)
-    clothing_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
-    clothing_occasion = models.CharField(max_length=150, default='Leisure')
+    equipment_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
+    equipment_occasion = models.CharField(max_length=150, default='Leisure')
 
     def __str__(self):
         return self.Equipment                
@@ -81,10 +80,11 @@ class Accessorie(models.Model):
 class Shoe(models.Model):
     shoes = models.CharField(max_length=150)
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True)
-    shoes_temperature = models.CharField(max_length=10, default='Warm')
-    shoes_activities = models.CharField(max_length=150, default='')
-    shoes_occasion = models.CharField(max_length=150, default='Leisure')
-
+    shoes_temperature = models.ManyToManyField(TempRange)
+    # shoes_activities = models.CharField(max_length=150, default='')
+    shoes_activities = models.ManyToManyField(Activities)
+    shoes_occasion = models.ManyToManyField(Occasion)
+    
     def __str__(self):
         return self.shoes
     
@@ -112,12 +112,11 @@ class Trip(models.Model):
     temp_range = models.CharField(max_length=150)
     activities = models.ManyToManyField(Activities) # using ManyToManyField
     
-
     def __str__(self):
         return self.trip_userID.username
 
 class Generated_list(models.Model):
-    gen_tripID = models.ForeignKey('Trip', on_delete = models.CASCADE, null = True)
+    gen_tripID = models.ForeignKey(Trip, on_delete = models.CASCADE, null = True)
     gen_accessories = models.ManyToManyField(Accessorie)
     gen_clothing = models.ManyToManyField(Clothing)    
     gen_qty_of_clothing = models.CharField(max_length=150) # Change this later
@@ -127,6 +126,7 @@ class Generated_list(models.Model):
     gen_health = models.ManyToManyField(Health)
     gen_shoe = models.ManyToManyField(Shoe)
     gen_toiletries = models.ManyToManyField(Toiletrie)
+    gen_equipment = models.ManyToManyField(Equipment)
 
     def __str__(self):
-        return 'actual string'
+        return 'Packing List for Trip: {}'.format(self.gen_tripID.trip_destination)

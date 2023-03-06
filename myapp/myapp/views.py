@@ -29,8 +29,6 @@ def process_data(request):
         temp_range = request.POST.get('temp_range')
         activities = request.POST.getlist('activities')  # retrieve a list of selected activities
 
-
-        print("TEMP RANGE:  " + temp_range)
          # convert checkin and checkout strings to datetime objects
         checkin_date = datetime.strptime(start_date, '%Y-%m-%d')
         checkout_date = datetime.strptime(end_date, '%Y-%m-%d')
@@ -73,5 +71,5 @@ def items(request):
 
 def saved_trips(request):
     user_id = request.user.id
-    trips= Trip.objects.filter(trip_userID= user_id)
+    trips = Trip.objects.filter(trip_userID=user_id).order_by('-id')
     return render(request, "user_dashboard/templates/saved_trips.html", {'trips': trips})

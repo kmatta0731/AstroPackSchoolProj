@@ -51,3 +51,29 @@ body {
 .form-container {
     margin-top: 80px;
 }
+
+/* .checkbox-row input[type="checkbox"] {
+    margin-right: 2px;
+    margin-left: 4px;
+} */
+
+.checkbox-row label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px; /* adjust the spacing as needed */
+  }
+  
+
+  .checkbox-row {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    /* gap: 1rem; */
+    margin-top: 0.5rem;
+    width: 100%;
+    /* background-color: pink; */
+}
+
+  

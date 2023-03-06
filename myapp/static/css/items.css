@@ -6,7 +6,7 @@
 
 li {
   list-style-type: none;
-  margin: 35px;
+  margin: 20px 35px;
   text-align: left;
 }
 
@@ -21,19 +21,23 @@ h2 {
   margin-right: 150px;
   margin-left: 100px;
   margin-top: 10px;
-  width: 30%;
+  width: 40%;
   padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-container {
   display: flex;
   justify-content: center;
+  padding-left: 70px;
 }
 
 .category-column {
   float: left;
   width: 50%;
-  padding: 10px; 
+  padding: 10px;
 }
 
 .category-row:after {
