@@ -81,7 +81,8 @@ class Shoe(models.Model):
     shoes = models.CharField(max_length=150)
     shoes_gender = models.ForeignKey('Gender', on_delete = models.CASCADE, default=3, null=True)
     shoes_temperature = models.ManyToManyField(TempRange)
-    shoes_activities = models.CharField(max_length=150, default='')
+    # shoes_activities = models.CharField(max_length=150, default='')
+    shoes_activities = models.ManyToManyField(Activities)
     shoes_occasion = models.ManyToManyField(Occasion)
     
     def __str__(self):
