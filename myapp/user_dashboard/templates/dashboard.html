@@ -50,14 +50,23 @@
                         </span>
                         {{ form.gender }}
                     </div>
+                    <!-- <span class="material-symbols-outlined">
+                        hiking
+                    </span>
                     <div class="activity-field">
-                        <span class="material-symbols-outlined">
-                            hiking
-                        </span>
-                        <div class="checkbox-row">
-                            {{ form.activities }}
+                        {{ form.activities }}
+                    </div>   -->
+                    <div class="activity-field">
+                        <div class="activity-icon">
+                          <span class="material-symbols-outlined">hiking</span>
                         </div>
-                    </div>  
+                        <div class="checkboxes-container">
+                          <div class="checkbox-row">
+                            {{ form.activities }}
+                          </div>
+                        </div>
+                      </div>
+                      
                     {% if form.errors %}
                         <div class="form-error">
                             {{ form.errors }}
