@@ -79,7 +79,7 @@ def saved_list(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     saved_list = Generated_list.objects.filter(gen_tripID=trip).first()
     if saved_list:
-        print(saved_list.gen_clothing.all())  # debug code
+        #print(saved_list.gen_clothing.all())  # debug code
         clothing_items = saved_list.gen_clothing.all()
         comfort_items = saved_list.gen_comfort.all()
         accessory_items = saved_list.gen_accessories.all()
@@ -89,7 +89,7 @@ def saved_list(request, trip_id):
         shoe_items = saved_list.gen_shoe.all()
         essential_items = saved_list.gen_essentials.all()
 
-
+        print(saved_list)
         context = {'saved_list': saved_list}
         return render(request, 'saved_list.html', context)
     else:
