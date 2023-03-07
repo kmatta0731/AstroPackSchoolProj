@@ -32,12 +32,57 @@
             
             <h2>Clothing</h2>
             <ul>
-            {% for item in saved_list.gen_clothing.all %}
-                <li>{{ item }}</li>
-            {% empty %}
-                <li>No items found.</li>
-            {% endfor %}
+                {% for item in saved_list.gen_clothing.all %}
+                    <li>{{ item }}</li>
+                {% empty %}
+                    <li>No items found.</li>
+                {% endfor %}
+
+                {% for item in saved_list.gen_comfort.all %}
+                    <li>{{ item }}</li>
+                    {% empty %}
+                    <li>No items found.</li>
+                    {% endfor %}
+
+                {% for item in saved_list.gen_accessories.all %}
+                    <li>{{ item }}</li>
+                    {% empty %}
+                        <li>No items found.</li>
+                    {% endfor %}
+                
+
+                {% for item in saved_list.gen_shoe.all %}
+                    <li>{{ item }}</li>
+                    {% empty %}
+                    <li>No items found.</li>
+                    {% endfor %}
+                
+                {% for item in saved_list.gen_toiletries.all %}
+                    <li>{{ item }}</li>
+                    {% empty %}
+                    <li>No items found.</li>
+                    {% endfor %}
+
+                {% for item in saved_list.gen_essentials.all %}
+                    <li>{{ item }}</li>
+                    {% empty %}
+                    <li>No items found.</li>
+                    {% endfor %}
+
+                {% for item in saved_list.gen_equipment.all %}
+                    <li>{{ item }}</li>
+                    {% empty %}
+                    <li>No items found.</li>
+                    {% endfor %}
+
+                {% for item in saved_list.gen_health.all %}
+                    <li>{{ item }}</li>
+                    {% empty %}
+                    <li>No items found.</li>
+                    {% endfor %}
+            
             </ul>
+        
             
             {% endblock %}
             
