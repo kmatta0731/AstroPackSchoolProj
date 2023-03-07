@@ -1,4 +1,5 @@
 # Create your models here.
+import uuid
 from django.db import models
 from django.conf import settings
 
@@ -102,6 +103,8 @@ class Gender(models.Model):
         return self.gen
 
 class Trip(models.Model):
+    id = models.AutoField(primary_key=True)
+    # id =models.CharField(max_length=100, null=True, blank=True, unique=True, default=uuid.uuid4()) #want to generate new unique id from this field
     trip_userID = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default = settings.AUTH_USER_MODEL )
     trip_destination = models.CharField(max_length = 150)
     trip_weather= models.CharField(max_length = 150)

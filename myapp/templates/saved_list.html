@@ -25,36 +25,23 @@
             </div>
         </header>
         <div class="main-container">
-            <div class="category-row">
-                <H1> Here is your saved list</H1>
-                  <!--{% for category, items in savedList.items|slice:":savedList.items|length//2" %}
-                  <div class="category-column">
-                    <h2>{{ category }}</h2>
-                    <ul>
-                        {% for item in items %}
-                        <li>
-                        <input type="checkbox" id="{{ item }}" name="{{ item }}">
-                        <label for="{{ item }}">{{ item }}</label>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                  </div>
-                  {% endfor %}-->
-                  {% for items in saved_list2|slice:":saved_list2|length//2" %}
-                  <div class="category-column">
-                        
-                    <ul>
-                        {% for item in items %}
-                        <li>
-                        <input type="checkbox" id="{{ item }}" name="{{ item }}">
-                        <label for="{{ item }}">{{ item }}</label>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                  </div>
 
-                  {% endfor %}
-            </div>
+            {% block content %}
+            
+            <h1>Packing List for {{ saved_list.gen_tripID.trip_destination }}</h1>
+            
+            <h2>Clothing</h2>
+            <ul>
+            {% for item in saved_list.gen_clothing.all %}
+                <li>{{ item }}</li>
+            {% empty %}
+                <li>No items found.</li>
+            {% endfor %}
+            </ul>
+            
+            {% endblock %}
+            
+                       
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{% static 'js/app.js' %}"></script>                                 

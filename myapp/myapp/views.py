@@ -74,8 +74,33 @@ def saved_trips(request):
     trips = Trip.objects.filter(trip_userID=user_id).order_by('-id')
     return render(request, "user_dashboard/templates/saved_trips.html", {'trips': trips})
 
-def saved_list(request):
-    savedList = Trip.objects.filter(trip_userID=request.user).latest('id')
-    saved_list2 = getcopyList()
-    print(saved_list2)
-    return render(request, 'saved_list.html', {'saved_List': saved_list2})
+# def saved_list(request, trip_id):
+#     trip = Trip.objects.get(id=trip_id)
+#     saved_list = Generated_list.objects.filter(gen_tripID=trip)
+#     print(trip)
+#     print(saved_list)
+#     context = {'saved_list': saved_list}
+#     return render(request, 'saved_list.html', context)
+
+# def saved_list(request, trip_id):
+#     trip = Trip.objects.get(id=trip_id)
+#     saved_list = Generated_list.objects.filter(gen_tripID=trip).first()
+#     if saved_list:
+#         print(saved_list.gen_clothing.all())  # debug code
+#         context = {'saved_list': saved_list}
+#         return render(request, 'saved_list.html', context)
+#     else:
+#         return HttpResponse("Error: no saved list found.")
+
+def saved_list(request, trip_id):
+    trip = Trip.objects.get(id=trip_id)
+    saved_list = Generated_list.objects.filter(gen_tripID=trip).first()
+    if saved_list:
+        print(saved_list.gen_clothing.all())  # debug code
+        clothing_items = saved_list.gen_clothing.all()
+        for item in clothing_items:
+            print(item)  # debug code
+        context = {'saved_list': saved_list}
+        return render(request, 'saved_list.html', context)
+    else:
+        return HttpResponse("Error: no saved list found.")
