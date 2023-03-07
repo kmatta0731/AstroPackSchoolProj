@@ -67,7 +67,7 @@ class Equipment(models.Model):
     Equipment = models.CharField(max_length=150)
     # equipment_activity = models.ForeignKey('Activities', on_delete = models.CASCADE, null=True)
     equipment_activity = models.ManyToManyField(Activities)
-    equipment_occasion = models.CharField(max_length=150, default='Leisure')
+    equipment_occasion = models.ManyToManyField(Occasion)
 
     def __str__(self):
         return self.Equipment                

@@ -19,7 +19,7 @@ def generate_packing_list(trip):
     comfort_items = Comfort.objects.all()
     health_items = Health.objects.filter(Q(health_gender__gen=gender) | Q(health_gender__gen= 'other'))
     shoe_items = Shoe.objects.filter(Q(shoes_gender__gen=gender) | Q(shoes_gender__gen='other'), shoes_occasion=occasion, shoes_temperature=temp_range, shoes_activities__in=activities).distinct()
-    equipment_items = Equipment.objects.filter(equipment_activity__in=activities).distinct()
+    equipment_items = Equipment.objects.filter(equipment_occasion=occasion, equipment_activity__in=activities).distinct()
 
     # Create the packing list dictionary
     packing_list = {

@@ -24,7 +24,8 @@ ACTIVITY_CHOICES = [
     (1, 'Beach'), 
     (2, 'Camping'), 
     (3, 'Hiking'), 
-    (4, 'Skiing/Snowboarding')
+    (4, 'Skiing/Snowboarding'),
+    (5, 'None'),
 ]
 
 class DestinationForm(forms.Form):
