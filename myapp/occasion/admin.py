@@ -32,7 +32,9 @@ class OccasionAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
 class TempAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
-
+class EquipmentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+    
 admin.site.register(Essential, EssentialAdmin)
 admin.site.register(Comfort, ComfortAdmin)
 admin.site.register(Electronic, ElectronicAdmin)
@@ -45,6 +47,6 @@ admin.site.register(Gender, GenderAdmin)
 admin.site.register(Trip)
 admin.site.register(TempRange, TempAdmin)
 admin.site.register(Occasion, OccasionAdmin)
-admin.site.register(Equipment)
+admin.site.register(Equipment, EquipmentAdmin)
 admin.site.register(Generated_list)
 admin.site.register(Activities, ActivitiesAdmin)

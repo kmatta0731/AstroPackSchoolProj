@@ -73,3 +73,24 @@ def saved_trips(request):
     user_id = request.user.id
     trips = Trip.objects.filter(trip_userID=user_id).order_by('-id')
     return render(request, "user_dashboard/templates/saved_trips.html", {'trips': trips})
+
+
+def saved_list(request, trip_id):
+    trip = Trip.objects.get(id=trip_id)
+    saved_list = Generated_list.objects.filter(gen_tripID=trip).first()
+    if saved_list:
+        print(saved_list.gen_clothing.all())  # debug code
+        clothing_items = saved_list.gen_clothing.all()
+        comfort_items = saved_list.gen_comfort.all()
+        accessory_items = saved_list.gen_accessories.all()
+        toiletry_items = saved_list.gen_toiletries.all()
+        health_items = saved_list.gen_health.all()
+        equipment_items = saved_list.gen_equipment.all()
+        shoe_items = saved_list.gen_shoe.all()
+        essential_items = saved_list.gen_essentials.all()
+
+
+        context = {'saved_list': saved_list}
+        return render(request, 'saved_list.html', context)
+    else:
+        return HttpResponse("Error: no saved list found.")

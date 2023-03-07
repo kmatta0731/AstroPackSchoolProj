@@ -1,6 +1,8 @@
 from occasion.models import *
 from django.db.models import Q
 
+copy_list2 = None
+
 def generate_packing_list(trip):
     destination = trip.trip_destination
     temp_range = trip.temp_range
@@ -49,7 +51,18 @@ def generate_packing_list(trip):
     accessoryLoop(accessory_items, copy_list)
     equipmentLoop(equipment_items, copy_list)
 
+    # setcopyList(copy_list)
+
     return packing_list
+
+# def setcopyList(copy_list):
+#     global copy_list2  # define copy_list2 as global variable
+#     copy_list2 = copy_list
+
+# def getcopyList():
+#     global copy_list2  # define copy_list2 as global variable
+#     return copy_list2
+
 
 def clothingLoop(clothing_items, copy_list):
     copy_list.gen_clothing.add(*clothing_items)
@@ -77,35 +90,3 @@ def accessoryLoop(accessory_items, copy_list):
 
 def equipmentLoop(equipment_items, copy_list):
     copy_list.gen_equipment.add(*equipment_items)
-
-# def clothingLoop(clothing_items, copy_list):
-#     for item in clothing_items: 
-#         copy_list.gen_clothing.add(item)
-
-# def comfortLoop(comfort_items, copy_list):
-#     for item in comfort_items: 
-#         copy_list.gen_comfort.add(item)
-
-# def electronicLoop(electronic_items, copy_list):
-#     for item in electronic_items: 
-#         copy_list.gen_electronic.add(item)
-
-# def essentialsLoop(essential_items, copy_list):
-#     for item in essential_items: 
-#         copy_list.gen_essentials.add(item)
-
-# def healthLoop(health_items, copy_list):
-#     for item in health_items: 
-#         copy_list.gen_health.add(item)
-
-# def shoeLoop(shoe_items, copy_list):
-#     for item in shoe_items: 
-#         copy_list.gen_shoe.add(item)
-
-# def toiletriesLoop(toiletry_items, copy_list):
-#     for item in toiletry_items: 
-#         copy_list.gen_toiletries.add(item)
-
-# def accessoryLoop(accessory_items, copy_list):
-#     for item in accessory_items: 
-#         copy_list.gen_accessories.add(item)

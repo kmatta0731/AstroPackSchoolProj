@@ -37,7 +37,7 @@
                         <li><strong>Date:</strong> {{ trip.trip_start_date }}</li>
                         <!-- <li><strong>Occasion:</strong> {{ trip.occasion }}</li> -->
                         <li><strong>Weather:</strong> {{ trip.trip_weather }} °F</li>
-                        <li><a href="{% url 'items' %}"><i class="fas fa-list"></i>  View packing list</a></li>
+                        <li><a href="{% url 'saved_list' trip.id %}"><i class="fas fa-list"></i>  View packing list</a></li>
                       </ul>
                     </div>
                   {% endfor %}
